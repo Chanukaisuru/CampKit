@@ -7,19 +7,18 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
+      body: SafeArea(       
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/image/OnbordingPage_image.jpeg",
-                width: 400,
-                height: 400,
-              ),
-
-              SizedBox(height: 20),
+              SizedBox(height: 30),
+                Image.asset(
+                  'assets/image/OnbordingPage_image.jpeg', // Replace with your asset image
+                  width: 400, // Adjust width if needed
+                  height: 400, // Adjust height if needed
+                ),
+              
+              SizedBox(height: 30),
               Text("CampKit",
               style: TextStyle(
                 fontFamily: 'Pacifico',
@@ -30,6 +29,7 @@ class OnboardingPage extends StatelessWidget {
             ],
           ),
         ),
+        
       ),
     );
   }
