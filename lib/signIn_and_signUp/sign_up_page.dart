@@ -28,18 +28,19 @@ class SignUpPage extends StatelessWidget{
                   _buildTextField('Email', 'ex: chanukaisuru@gmail.com', false),
                   SizedBox(height: 16,),
                   _buildTextField('Password', '********', false),
-                  SizedBox(height: 16,),
+
+                  SizedBox(height: 20,),
 
 
                   ElevatedButton(
                     onPressed: (){
                       /**/ 
-                    },
+                    }, 
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:Color(0x99277A8C),
+                      backgroundColor:Color(0xFF277A8C),
                       padding: EdgeInsets.symmetric(vertical: 14),
                       shape:RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ), 
                     child: Center(
