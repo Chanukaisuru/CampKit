@@ -13,13 +13,14 @@ class SignUpPage extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 60),
-                  
+                  Image.asset('assets/image/signInPage_image.jpeg',height: 150),
+
                 ],
               ),
             ),
           ),
         ),
       ),
-    )
+    );
   }
 }
