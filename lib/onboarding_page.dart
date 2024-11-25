@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signIn_and_signUp/sign_up_page.dart';
 
 
 class OnboardingPage extends StatelessWidget {
@@ -42,7 +43,10 @@ class OnboardingPage extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () {
-                   // Navigation path will be added here later
+                  Navigator.push(context,
+                   MaterialPageRoute(builder: (context) =>SignUpPage(),
+                   ),
+                   );
                 },
                style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
