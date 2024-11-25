@@ -4,6 +4,7 @@ class SignUpPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -11,6 +12,7 @@ class SignUpPage extends StatelessWidget{
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                
                 children: [
                   SizedBox(height: 30),
                   Image.asset('assets/image/signInPage_image.jpeg',height: 150),
@@ -23,11 +25,40 @@ class SignUpPage extends StatelessWidget{
                   ),
 
                   SizedBox(height: 20),
-                  _buildTextField('Name', 'ex: Chanuka Isuru', false),
+
+                  //Name field
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Name',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  _buildTextField( 'Chanuka Isuru', false),
                   SizedBox(height: 16,),
-                  _buildTextField('Email', 'ex: chanukaisuru@gmail.com', false),
+                  
+
+                  //email field
+                   Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Email',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  _buildTextField( 'chanukaisuru@gmail.com', false),
                   SizedBox(height: 16,),
-                  _buildTextField('Password', '********', false),
+                  
+
+                  //password field
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Password',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  _buildTextField( '********', false),
 
                   SizedBox(height: 20,),
 
@@ -46,9 +77,27 @@ class SignUpPage extends StatelessWidget{
                     child: Center(
                       child: Text('Sign up',
                       style: TextStyle(fontSize: 20,color: Colors.white),
-                      )
-                       ),
-                 )
+                      ),
+                    ),
+                  ),
+                  
+                  SizedBox(height: 20),
+
+                  Text('or Sign up with',
+                  style: TextStyle(fontSize: 16),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildSocialIcon('assets/icon/google.png'),
+                      
+                    ],
+                  )
+                 
+
 
                 ],
               ),
@@ -60,11 +109,11 @@ class SignUpPage extends StatelessWidget{
   }
 }
 
-Widget _buildTextField(String label, String hint, bool obscureText) {
+Widget _buildTextField( String hint, bool obscureText) {
   return TextField(
     obscureText: obscureText,
     decoration: InputDecoration(
-      labelText: label,
+      
       hintText: hint,
       hintStyle: TextStyle(
         color: Colors.grey.withOpacity(0.6),
@@ -94,4 +143,18 @@ Widget _buildTextField(String label, String hint, bool obscureText) {
         :null,
     ),
   );
+
+
+  Widget _buildSocialIcon(String assetPath){
+    return GestureDetector(
+      onTap:(){
+        //Handle social login
+      },
+
+      child: Image.asset(
+        assetPath,
+        height: 40,
+      ),
+    );
+  }
 }
