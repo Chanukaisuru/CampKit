@@ -1,3 +1,4 @@
+import 'package:campkit/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -72,7 +73,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   ElevatedButton(
                     onPressed: (){
-                      /**/ 
+                      Navigator.push(context,
+                   MaterialPageRoute(builder: (context) =>CampKitApp(),
+                   ),
+                   );
                     }, 
                     style: ElevatedButton.styleFrom(
                       backgroundColor:Color(0xFF277A8C),
