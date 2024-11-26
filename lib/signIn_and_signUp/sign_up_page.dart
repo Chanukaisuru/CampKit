@@ -58,7 +58,7 @@ class SignUpPage extends StatelessWidget{
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField( '********', false),
+                  _buildTextField( '********', true),
 
                   SizedBox(height: 20,),
 
@@ -89,17 +89,19 @@ class SignUpPage extends StatelessWidget{
 
                   SizedBox(height: 20),
 
+                  //social meadia icons
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _buildSocialIcon('assets/icon/google.png'),
-                      SizedBox(width: 20),
+                      SizedBox(width: 25),
 
                       _buildSocialIcon('assets/icon/facebook.png'),
-                      SizedBox(width: 20),
+                      SizedBox(width: 25),
 
                       _buildSocialIcon('assets/icon/apple.png'),
-                      SizedBox(width: 20),
+                      SizedBox(width: 25),
                       
                     ],
                   ),
@@ -110,7 +112,7 @@ class SignUpPage extends StatelessWidget{
                       Text('Already have an Account?',
                       style: TextStyle(fontSize: 16),
                       ),
-
+                      SizedBox(width: 2),
                       GestureDetector(
                         onTap: (){
                           //navigation path
@@ -134,6 +136,7 @@ class SignUpPage extends StatelessWidget{
       ),
     );
   }
+    // social meadia icon function
     Widget _buildSocialIcon(String assetPath){
     return GestureDetector(
       onTap:(){
@@ -148,6 +151,7 @@ class SignUpPage extends StatelessWidget{
   }
 }
 
+//text feild function
 Widget _buildTextField( String hint, bool obscureText) {
   return TextField(
     obscureText: obscureText,
@@ -179,7 +183,7 @@ Widget _buildTextField( String hint, bool obscureText) {
       ),
       suffixIcon: obscureText
         ?Icon(Icons.visibility_off,color: const Color.fromARGB(255, 124, 123, 123))
-        :null,
+        :null
     ),
   );
 
