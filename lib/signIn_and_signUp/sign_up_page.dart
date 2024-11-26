@@ -93,9 +93,18 @@ class SignUpPage extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _buildSocialIcon('assets/icon/google.png'),
+                      SizedBox(width: 20),
+
+                      _buildSocialIcon('assets/icon/facebook.png'),
+                      SizedBox(width: 20),
+
+                      _buildSocialIcon('assets/icon/apple.png'),
+                      SizedBox(width: 20),
                       
                     ],
-                  )
+                  ),
+
+                  
                  
 
 
@@ -104,6 +113,18 @@ class SignUpPage extends StatelessWidget{
             ),
           ),
         ),
+      ),
+    );
+  }
+    Widget _buildSocialIcon(String assetPath){
+    return GestureDetector(
+      onTap:(){
+        //Handle social login
+      },
+
+      child: Image.asset(
+        assetPath,
+        height: 40,
       ),
     );
   }
@@ -144,17 +165,4 @@ Widget _buildTextField( String hint, bool obscureText) {
     ),
   );
 
-
-  Widget _buildSocialIcon(String assetPath){
-    return GestureDetector(
-      onTap:(){
-        //Handle social login
-      },
-
-      child: Image.asset(
-        assetPath,
-        height: 40,
-      ),
-    );
-  }
 }
