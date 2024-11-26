@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget{
+class SignUpPage extends StatefulWidget {
+  @override
+  _SignUpPageState createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool _obscurePassword = true; // State variable to manage password visibility
+
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -58,9 +66,8 @@ class SignUpPage extends StatelessWidget{
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField( '********', true),
-
-                  SizedBox(height: 20,),
+                  _buildPasswordField(),
+                  SizedBox(height: 20),
 
 
                   ElevatedButton(
@@ -136,6 +143,56 @@ class SignUpPage extends StatelessWidget{
       ),
     );
   }
+
+  // Password field with custom eye icon toggle
+  Widget _buildPasswordField() {
+    return TextField(
+      obscureText: _obscurePassword,
+      decoration: InputDecoration(
+        hintText: '********',
+
+        hintStyle: TextStyle(
+          color: Colors.grey.withOpacity(0.6),
+          fontSize: 15,
+        ),
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: const Color(0x99277A8C),
+            width: 1.0,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: const Color(0xFFF2A81D),
+            width: 2.0,
+          ),
+        ),
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              _obscurePassword = !_obscurePassword;
+            });
+          },
+          child: Image.asset(
+            _obscurePassword
+                ? 'assets/icon/close_eye.png' // Custom icon for hidden password
+                : 'assets/icon/open_eye.png', // Custom icon for visible password
+                        
+            height: 20,
+            color: Color.fromARGB(255, 124, 123, 123),
+          ),
+        ),
+      ),
+    );
+  }
+
+
     // social meadia icon function
     Widget _buildSocialIcon(String assetPath){
     return GestureDetector(
@@ -181,9 +238,7 @@ Widget _buildTextField( String hint, bool obscureText) {
           width: 2.0,
         ),
       ),
-      suffixIcon: obscureText
-        ?Icon(Icons.visibility_off,color: const Color.fromARGB(255, 124, 123, 123))
-        :null
+      
     ),
   );
 
