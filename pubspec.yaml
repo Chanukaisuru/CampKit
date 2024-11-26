@@ -66,6 +66,8 @@ flutter:
      - assets/icon/google.png
      - assets/icon/facebook.png
      - assets/icon/apple.png
+     - assets/icon/close_eye.png
+     - assets/icon/open_eye.png
      
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
