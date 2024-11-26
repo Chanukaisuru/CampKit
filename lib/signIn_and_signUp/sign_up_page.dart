@@ -103,8 +103,26 @@ class SignUpPage extends StatelessWidget{
                       
                     ],
                   ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Already have an Account?',
+                      style: TextStyle(fontSize: 16),
+                      ),
 
-                  
+                      GestureDetector(
+                        onTap: (){
+                          //navigation path
+                        },
+
+                        child: Text('sign in',
+                        style: TextStyle(fontSize: 16,color:Colors.blue),
+                        
+                        ),
+                      ),
+                    ],
+                  ),
                  
 
 
