@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 
+
 void main() {
   runApp(CampKitApp());
 }
@@ -186,34 +187,43 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icons/home.png', // Replace with your image path
+              'assets/icon/home.png', 
               height: 24,
               width: 24,
             ),
-            label: '',
+            label: 'home',
           ),
 
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icons/cart.png', // Replace with your image path
+              'assets/icon/search.png', 
               height: 24,
               width: 24,
             ),
-            label: '',
+            label: 'search',
           ),
 
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icons/profile.png', // Replace with your image path
+              'assets/icon/cart.png', 
+              height: 30,
+              width: 30,
+            ),
+            label: 'cart',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icon/user.png', 
               height: 24,
               width: 24,
             ),
-            label: '',
+            label: 'profile',
           ),
         ],
-        backgroundColor: Colors.black87,
-        selectedItemColor: Colors.white, // This won't apply to custom images
-        unselectedItemColor: Colors.grey, // This won't apply to custom images
+        backgroundColor: const Color.fromARGB(221, 255, 255, 255),
+        selectedItemColor: const Color.fromARGB(255, 231, 127, 9), 
+        unselectedItemColor: Colors.grey, 
       ),
 
     );
