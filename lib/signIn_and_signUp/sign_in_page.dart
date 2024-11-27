@@ -75,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ), 
                     child: Center(
-                      child: Text('Sign up',
+                      child: Text('Sign in',
                       style: TextStyle(fontSize: 20,color: Colors.white),
                       ),
                     ),
