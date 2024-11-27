@@ -228,7 +228,7 @@ Widget _buildTextField(String hint, bool obscureText) {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(
-          color: const Color(0x99277A8C), // Set color for enabled state
+          color: const Color(0xFF277A8C), // Set color for enabled state
           width: 1.0,
         ),
       ),
