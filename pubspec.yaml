@@ -73,6 +73,9 @@ flutter:
      - assets/image/ad1.jpeg
      - assets/image/ad2.jpeg
      - assets/image/ad3.jpeg
+     - assets/icon/cart.png 
+     - assets/icon/home.png
+     - assets/icon/user.png
 
      
   #   - images/a_dot_burr.jpeg
