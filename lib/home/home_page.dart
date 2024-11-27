@@ -120,10 +120,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ), 
 
+
+
               /*-----------------add bar------------ */
               SizedBox(height: 20),
               Container(
-                height: 200,  // Set the height of the Ad Carousel to 150
+                height: 200,  
                 child: PageView.builder(
                   controller: _adController,
                   onPageChanged: (index) {
@@ -167,50 +169,55 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              
+
+
+              /*---------------category bar--------------------- */
 
               SizedBox(height: 20),
               const CategoryRow(),
 
-              /*-----------catogory box----------- */
-              /*SizedBox(height: 20),
-              SingleChildScrollView(
-                 scrollDirection: Axis.horizontal,
-                 child: Row(
-                  children: [
-                    CategoryButton(label: "Populer"),
-                    CategoryButton(label: "Tent"),
-                    CategoryButton(label: "Back Pack"),
-                    CategoryButton(label: "Cooking Item"),
-                    CategoryButton(label: "Other"),
-                  ],
-                ),
-              ),*/
             ],
           ),
-        ),        
+        ),
       ),
-    );     
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/home.png', // Replace with your image path
+              height: 24,
+              width: 24,
+            ),
+            label: '',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/cart.png', // Replace with your image path
+              height: 24,
+              width: 24,
+            ),
+            label: '',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/profile.png', // Replace with your image path
+              height: 24,
+              width: 24,
+            ),
+            label: '',
+          ),
+        ],
+        backgroundColor: Colors.black87,
+        selectedItemColor: Colors.white, // This won't apply to custom images
+        unselectedItemColor: Colors.grey, // This won't apply to custom images
+      ),
+
+    );
   }    
 }
 
-/*class CategoryButton extends StatelessWidget{
-  final String label;
 
-  CategoryButton ({required this.label});
-
-  @override
-  Widget build(BuildContext context){
-    return Padding(
-      padding: const EdgeInsets.only(right:8.0),
-      child: OutlinedButton(
-        onPressed:(){},
-        child: Text(label),
-        style: OutlinedButton.styleFrom(
-          foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-          side: BorderSide(color:const Color(0xFF277A8C)),
-          shape:StadiumBorder(),
-        ),
-      ),
-    );
-  }
-}*/
