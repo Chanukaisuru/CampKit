@@ -25,8 +25,8 @@ class CategoryButton extends StatelessWidget {
           ),
         ),
         style: OutlinedButton.styleFrom(
-          backgroundColor: isSelected ? const Color.fromARGB(255, 167, 73, 19) : Colors.transparent,
-          side: BorderSide(color: Colors.green),
+          backgroundColor: isSelected ? const Color(0xFF277A8C) : Colors.transparent,
+          side: BorderSide(color: Color(0xFF277A8C)),
           shape: const StadiumBorder(),
         ),
       ),
