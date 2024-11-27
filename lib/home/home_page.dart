@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
 
 
               /*-----------catogory box----------- */
-              SizedBox(height: 20),
+              /*SizedBox(height: 20),
               SingleChildScrollView(
                  scrollDirection: Axis.horizontal,
                  child: Row(
@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                     CategoryButton(label: "Other"),
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),        
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
   }    
 }
 
-class CategoryButton extends StatelessWidget{
+/*class CategoryButton extends StatelessWidget{
   final String label;
 
   CategoryButton ({required this.label});
@@ -211,4 +211,4 @@ class CategoryButton extends StatelessWidget{
       ),
     );
   }
-}
+}*/
