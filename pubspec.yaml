@@ -69,6 +69,7 @@ flutter:
      - assets/icon/close_eye.png
      - assets/icon/open_eye.png
      - assets/image/userimage.jpeg
+     - assets/icon/search.png
      
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
