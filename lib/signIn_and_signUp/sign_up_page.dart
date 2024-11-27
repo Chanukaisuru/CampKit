@@ -1,4 +1,5 @@
 import 'package:campkit/home/home_page.dart';
+import 'package:campkit/signIn_and_signUp/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -9,9 +10,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool _obscurePassword = true; // State variable to manage password visibility
 
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -21,16 +21,17 @@ class _SignUpPageState extends State<SignUpPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                
                 children: [
                   SizedBox(height: 30),
-                  Image.asset('assets/image/signInPage_image.jpeg',height: 150),
+                  Image.asset('assets/image/signInPage_image.jpeg',
+                      height: 150),
                   SizedBox(height: 20),
-                  Text('Create Your Account',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  Text(
+                    'Create Your Account',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
 
                   SizedBox(height: 20),
@@ -43,21 +44,23 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField( 'Chanuka Isuru', false),
-                  SizedBox(height: 16,),
-                  
+                  _buildTextField('Chanuka Isuru', false),
+                  SizedBox(
+                    height: 16,
+                  ),
 
                   //email field
-                   Align(
+                  Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Email',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField( 'chanukaisuru@gmail.com', false),
-                  SizedBox(height: 16,),
-                  
+                  _buildTextField('chanukaisuru@gmail.com', false),
+                  SizedBox(
+                    height: 16,
+                  ),
 
                   //password field
                   Align(
@@ -70,32 +73,35 @@ class _SignUpPageState extends State<SignUpPage> {
                   _buildPasswordField(),
                   SizedBox(height: 20),
 
-
                   ElevatedButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                   MaterialPageRoute(builder: (context) =>CampKitApp(),
-                   ),
-                   );
-                    }, 
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CampKitApp(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:Color(0xFF277A8C),
+                      backgroundColor: Color(0xFF277A8C),
                       padding: EdgeInsets.symmetric(vertical: 14),
-                      shape:RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                    ), 
+                    ),
                     child: Center(
-                      child: Text('Sign up',
-                      style: TextStyle(fontSize: 20,color: Colors.white),
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
-                  
+
                   SizedBox(height: 20),
 
-                  Text('or Sign up with',
-                  style: TextStyle(fontSize: 16),
+                  Text(
+                    'or Sign up with',
+                    style: TextStyle(fontSize: 16),
                   ),
 
                   SizedBox(height: 20),
@@ -107,38 +113,36 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       _buildSocialIcon('assets/icon/google.png'),
                       SizedBox(width: 25),
-
                       _buildSocialIcon('assets/icon/facebook.png'),
                       SizedBox(width: 25),
-
                       _buildSocialIcon('assets/icon/apple.png'),
                       SizedBox(width: 25),
-                      
                     ],
                   ),
                   SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an Account?',
-                      style: TextStyle(fontSize: 16),
+                      Text(
+                        'Already have an Account?',
+                        style: TextStyle(fontSize: 16),
                       ),
                       SizedBox(width: 2),
                       GestureDetector(
-                        onTap: (){
-                          //navigation path
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignInPage()),
+                          );
                         },
-
-                        child: Text('sign in',
-                        style: TextStyle(fontSize: 16,color:Colors.blue),
-                        
+                        child: Text(
+                          'sign in',
+                          style: TextStyle(fontSize: 16, color: Colors.blue),
                         ),
                       ),
                     ],
                   ),
-                 
-
-
                 ],
               ),
             ),
@@ -154,12 +158,10 @@ class _SignUpPageState extends State<SignUpPage> {
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         hintText: '********',
-
         hintStyle: TextStyle(
           color: Colors.grey.withOpacity(0.6),
           fontSize: 15,
         ),
-
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -187,7 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
             _obscurePassword
                 ? 'assets/icon/close_eye.png' // Custom icon for hidden password
                 : 'assets/icon/open_eye.png', // Custom icon for visible password
-                        
+
             height: 20,
             color: Color.fromARGB(255, 124, 123, 123),
           ),
@@ -196,14 +198,12 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-
-    // social meadia icon function
-    Widget _buildSocialIcon(String assetPath){
+  // social meadia icon function
+  Widget _buildSocialIcon(String assetPath) {
     return GestureDetector(
-      onTap:(){
+      onTap: () {
         //Handle social login
       },
-
       child: Image.asset(
         assetPath,
         height: 40,
@@ -213,11 +213,10 @@ class _SignUpPageState extends State<SignUpPage> {
 }
 
 //text feild function
-Widget _buildTextField( String hint, bool obscureText) {
+Widget _buildTextField(String hint, bool obscureText) {
   return TextField(
     obscureText: obscureText,
     decoration: InputDecoration(
-      
       hintText: hint,
       hintStyle: TextStyle(
         color: Colors.grey.withOpacity(0.6),
@@ -225,7 +224,6 @@ Widget _buildTextField( String hint, bool obscureText) {
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
@@ -234,7 +232,6 @@ Widget _buildTextField( String hint, bool obscureText) {
           width: 1.0,
         ),
       ),
-
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(
@@ -242,8 +239,6 @@ Widget _buildTextField( String hint, bool obscureText) {
           width: 2.0,
         ),
       ),
-      
     ),
   );
-
 }
