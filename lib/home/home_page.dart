@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:campkit/category_Box/category_row.dart';
 
 void main() {
   runApp(CampKitApp());
@@ -167,7 +168,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-
+              SizedBox(height: 20),
+              const CategoryRow(),
 
               /*-----------catogory box----------- */
               /*SizedBox(height: 20),
