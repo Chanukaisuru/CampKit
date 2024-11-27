@@ -1,5 +1,6 @@
-import 'package:campkit/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:campkit/home/home_page.dart';
+import 'package:campkit/signIn_and_signUp/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -7,13 +8,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  bool _obscurePassword = true; // State variable to manage password visibility
-
+  bool _obscurePassword = true; // Manage password visibility state
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -21,34 +21,38 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                
                 children: [
                   SizedBox(height: 30),
-                  Image.asset('assets/image/signInPage_image.jpeg',height: 150),
-                  SizedBox(height: 20),
-                  Text('Create Your Account',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
 
+                  // Sign-in Page Image
+                  Image.asset(
+                    'assets/image/signInPage_image.jpeg',
+                    height: 150,
+                  ),
                   SizedBox(height: 20),
 
-                  
-                  //email field
-                   Align(
+                  // Page Title
+                  Text(
+                    'Sign in Your Account',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+
+                  // Email Field
+                  Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Email',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField( 'chanukaisuru@gmail.com', false),
-                  SizedBox(height: 16,),
-                  
+                  _buildTextField('chanukaisuru@gmail.com', false),
+                  SizedBox(height: 16),
 
-                  //password field
+                  // Password Field
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -59,75 +63,76 @@ class _SignInPageState extends State<SignInPage> {
                   _buildPasswordField(),
                   SizedBox(height: 20),
 
-
+                  // Sign-in Button
                   ElevatedButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                   MaterialPageRoute(builder: (context) =>CampKitApp(),
-                   ),
-                   );
-                    }, 
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CampKitApp(),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:Color(0xFF277A8C),
+                      backgroundColor: Color(0xFF277A8C),
                       padding: EdgeInsets.symmetric(vertical: 14),
-                      shape:RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                    ), 
+                    ),
                     child: Center(
-                      child: Text('Sign in',
-                      style: TextStyle(fontSize: 20,color: Colors.white),
+                      child: Text(
+                        'Sign in',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
-                  
                   SizedBox(height: 20),
 
-                  Text('or Sign up with',
-                  style: TextStyle(fontSize: 16),
+                  // Social Media Login
+                  Text(
+                    'or Sign in with',
+                    style: TextStyle(fontSize: 16),
                   ),
-
                   SizedBox(height: 20),
-
-                  //social meadia icons
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSocialIcon('assets/icon/google.png'),
+                      _buildSocialIcon(
+                          'assets/icon/google.png', 48.0), // Google Icon
                       SizedBox(width: 25),
-
-                      _buildSocialIcon('assets/icon/facebook.png'),
-                      SizedBox(width: 25),
-
-                      _buildSocialIcon('assets/icon/apple.png'),
-                      SizedBox(width: 25),
-                      
+                      _buildSocialIcon(
+                          'assets/icon/facebook.png', 35.0), // Facebook Icon
                     ],
                   ),
                   SizedBox(height: 20),
+
+                  // Sign-up Option
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an Account?',
-                      style: TextStyle(fontSize: 16),
+                      Text(
+                        "Don't have an account?",
+                        style: TextStyle(fontSize: 16),
                       ),
                       SizedBox(width: 2),
                       GestureDetector(
-                        onTap: (){
-                          //navigation path
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpPage(),
+                            ),
+                          );
                         },
-
-                        child: Text('sign in',
-                        style: TextStyle(fontSize: 16,color:Colors.blue),
-                        
+                        child: Text(
+                          'Sign up',
+                          style: TextStyle(fontSize: 16, color: Colors.blue),
                         ),
                       ),
                     ],
                   ),
-                 
-
-
                 ],
               ),
             ),
@@ -137,32 +142,30 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  // Password field with custom eye icon toggle
+  /// Password field with eye toggle
   Widget _buildPasswordField() {
     return TextField(
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         hintText: '********',
-
         hintStyle: TextStyle(
           color: Colors.grey.withOpacity(0.6),
           fontSize: 15,
         ),
-
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: const Color(0x99277A8C),
+            color: Color(0x99277A8C),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: const Color(0xFFF2A81D),
+            color: Color(0xFFF2A81D),
             width: 2.0,
           ),
         ),
@@ -174,65 +177,61 @@ class _SignInPageState extends State<SignInPage> {
           },
           child: Image.asset(
             _obscurePassword
-                ? 'assets/icon/close_eye.png' // Custom icon for hidden password
-                : 'assets/icon/open_eye.png', // Custom icon for visible password
-                        
+                ? 'assets/icon/close_eye.png' // Hidden password icon
+                : 'assets/icon/open_eye.png', // Visible password icon
             height: 20,
-            color: Color.fromARGB(255, 124, 123, 123),
+            color: Color(0xFF7C7B7B),
           ),
         ),
       ),
     );
   }
 
-
-    // social meadia icon function
-    Widget _buildSocialIcon(String assetPath){
+  /// Social Media Icon Widget with Custom Size
+  Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
-      onTap:(){
-        //Handle social login
+      onTap: () {
+        // Handle social login
       },
-
-      child: Image.asset(
-        assetPath,
-        height: 40,
+      child: Container(
+        width: size, // Set width based on parameter
+        height: size, // Set height based on parameter
+        child: Image.asset(
+          assetPath,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
-}
 
-//text feild function
-Widget _buildTextField( String hint, bool obscureText) {
-  return TextField(
-    obscureText: obscureText,
-    decoration: InputDecoration(
-      
-      hintText: hint,
-      hintStyle: TextStyle(
-        color: Colors.grey.withOpacity(0.6),
-        fontSize: 15,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
-          color: const Color(0x99277A8C), // Set color for enabled state
-          width: 1.0,
+  /// Text Field Widget
+  Widget _buildTextField(String hint, bool obscureText) {
+    return TextField(
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(
+          color: Colors.grey.withOpacity(0.6),
+          fontSize: 15,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Color(0x99277A8C),
+            width: 1.0,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Color(0xFFF2A81D),
+            width: 2.0,
+          ),
         ),
       ),
-
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
-          color: const Color(0xFFF2A81D), // Set color for focused state
-          width: 2.0,
-        ),
-      ),
-      
-    ),
-  );
-
+    );
+  }
 }
