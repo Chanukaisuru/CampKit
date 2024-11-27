@@ -49,7 +49,7 @@ class OnboardingPage extends StatelessWidget {
                    );
                 },
                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Color(0xFF277A8C),
                   padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                   shape: RoundedRectangleBorder(
                      borderRadius: BorderRadius.circular(30),
