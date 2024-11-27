@@ -166,10 +166,49 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
+
+
+              /*-----------catogory box----------- */
+              SizedBox(height: 20),
+              SingleChildScrollView(
+                 scrollDirection: Axis.horizontal,
+                 child: Row(
+                  children: [
+                    CategoryButton(label: "Populer"),
+                    CategoryButton(label: "Tent"),
+                    CategoryButton(label: "Back Pack"),
+                    CategoryButton(label: "Cooking Item"),
+                    CategoryButton(label: "Other"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),        
       ),
     );     
   }    
+}
+
+class CategoryButton extends StatelessWidget{
+  final String label;
+
+  CategoryButton ({required this.label});
+
+  @override
+  Widget build(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.only(right:8.0),
+      child: OutlinedButton(
+        onPressed:(){},
+        child: Text(label),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+          side: BorderSide(color:const Color(0xFF277A8C)),
+          shape:StadiumBorder(),
+        ),
+      ),
+    );
+  }
 }
