@@ -55,10 +55,10 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               // First Row: Greeting and Profile Image
-              const Row(
+              Row(
                 children: [
                   // Column for greeting text
-                  Expanded(
+                  const Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -80,15 +80,33 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  // Profile image
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/image/userimage.jpeg'), // Replace with your image asset
+
+
+                  /*------------------Profile image--------------------*/
+                  
+                  Container(
+                    padding: const EdgeInsets.all(2), // Space between the border and CircleAvatar
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Color(0xFF277A8C), 
+                        width: 3,           
+                      ),
+                    ),
+
+
+                    child: CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/image/userimage.jpeg'), 
+                    ),
                   ),
                 ],
               ),  
 
-              /*--------Search bar----------*/
+
+
+              /*-----------------Search bar-------------------*/
+
               SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
@@ -134,6 +152,7 @@ class _HomePageState extends State<HomePage> {
 
 
               /*-----------------add bar------------ */
+
               SizedBox(height: 20),
               Container(
                 height: 200,  
@@ -193,6 +212,8 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
+
+      /*-----------------bottom navigation bar------------------ */
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
          onTap: _onNavBarItemTapped
