@@ -1,10 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 
-class TentPage extends StatelessWidget {
+class TentPage extends StatefulWidget {
   const TentPage({super.key});
 
   @override
+  _TentPageState createState() => _TentPageState();
+}
+
+class _TentPageState extends State<TentPage> {
+  int _selectedIndex = 0;
+
+  void _onNavBarItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: const [
+              Text('Tent page'),
+            ],
+          ),
+        ),
+      ),
+
+      /*-----------------bottom navigation bar------------------ */
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: _selectedIndex,
+        onTap: _onNavBarItemTapped,
+      ),
+    );
   }
 }
