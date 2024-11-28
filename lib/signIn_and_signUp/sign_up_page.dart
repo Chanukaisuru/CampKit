@@ -23,9 +23,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 30),
+
+                  // Header Image
                   Image.asset('assets/image/signInPage_image.jpeg',
                       height: 150),
                   SizedBox(height: 20),
+
+                  // Title
                   Text(
                     'Create Your Account',
                     style: TextStyle(
@@ -33,10 +37,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   SizedBox(height: 20),
 
-                  //Name field
+                  // Name Field
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -45,11 +48,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   _buildTextField('Chanuka Isuru', false),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  SizedBox(height: 16),
 
-                  //email field
+                  // Email Field
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -58,11 +59,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   _buildTextField('chanukaisuru@gmail.com', false),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  SizedBox(height: 16),
 
-                  //password field
+                  // Password Field
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -73,6 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   _buildPasswordField(),
                   SizedBox(height: 20),
 
+                  // Sign Up Button
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -96,30 +96,27 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 20),
 
+                  // Social Media Login
                   Text(
                     'or Sign up with',
                     style: TextStyle(fontSize: 16),
                   ),
-
                   SizedBox(height: 20),
-
-                  //social meadia icons
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSocialIcon('assets/icon/google.png'),
+                      _buildSocialIcon('assets/icon/google.png', 48.0),
                       SizedBox(width: 25),
-                      _buildSocialIcon('assets/icon/facebook.png'),
-                      SizedBox(width: 25),
-                      _buildSocialIcon('assets/icon/apple.png'),
+                      _buildSocialIcon('assets/icon/facebook.png', 35.0),
                       SizedBox(width: 25),
                     ],
                   ),
                   SizedBox(height: 20),
+
+                  // Sign In Navigation
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -133,7 +130,8 @@ class _SignUpPageState extends State<SignUpPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignInPage()),
+                              builder: (context) => SignInPage(),
+                            ),
                           );
                         },
                         child: Text(
@@ -152,7 +150,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  // Password field with custom eye icon toggle
+  /// Password Field with Eye Icon Toggle
   Widget _buildPasswordField() {
     return TextField(
       obscureText: _obscurePassword,
@@ -168,14 +166,14 @@ class _SignUpPageState extends State<SignUpPage> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: const Color(0x99277A8C),
+            color: Color(0x99277A8C),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: const Color(0xFFF2A81D),
+            color: Color(0xFFF2A81D),
             width: 2.0,
           ),
         ),
@@ -189,7 +187,6 @@ class _SignUpPageState extends State<SignUpPage> {
             _obscurePassword
                 ? 'assets/icon/close_eye.png' // Custom icon for hidden password
                 : 'assets/icon/open_eye.png', // Custom icon for visible password
-
             height: 20,
             color: Color.fromARGB(255, 124, 123, 123),
           ),
@@ -198,47 +195,51 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  // social meadia icon function
-  Widget _buildSocialIcon(String assetPath) {
+  /// Social Media Icon Widget with Custom Size
+  Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
       onTap: () {
-        //Handle social login
+        // Handle social login
       },
-      child: Image.asset(
-        assetPath,
-        height: 40,
+      child: Container(
+        width: size,
+        height: size,
+        child: Image.asset(
+          assetPath,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
-}
 
-//text feild function
-Widget _buildTextField(String hint, bool obscureText) {
-  return TextField(
-    obscureText: obscureText,
-    decoration: InputDecoration(
-      hintText: hint,
-      hintStyle: TextStyle(
-        color: Colors.grey.withOpacity(0.6),
-        fontSize: 15,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
-          color: const Color(0xFF277A8C), // Set color for enabled state
-          width: 1.0,
+  /// Text Field Widget
+  Widget _buildTextField(String hint, bool obscureText) {
+    return TextField(
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: TextStyle(
+          color: Colors.grey.withOpacity(0.6),
+          fontSize: 15,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Color(0xFF277A8C),
+            width: 1.0,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Color(0xFFF2A81D),
+            width: 2.0,
+          ),
         ),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(
-          color: const Color(0xFFF2A81D), // Set color for focused state
-          width: 2.0,
-        ),
-      ),
-    ),
-  );
+    );
+  }
 }
