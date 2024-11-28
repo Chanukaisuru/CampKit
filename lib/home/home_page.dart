@@ -1,3 +1,4 @@
+import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 
@@ -35,6 +36,15 @@ class _HomePageState extends State<HomePage> {
     'assets/image/ad2.jpeg',
     'assets/image/ad3.jpeg',
   ];
+
+  int _selectedIndex = 0;
+
+  void _onNavBarItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,47 +193,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icon/home.png', 
-              height: 24,
-              width: 24,
-            ),
-            label: 'home',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icon/search.png', 
-              height: 24,
-              width: 24,
-            ),
-            label: 'search',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icon/cart.png', 
-              height: 30,
-              width: 30,
-            ),
-            label: 'cart',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icon/user.png', 
-              height: 24,
-              width: 24,
-            ),
-            label: 'profile',
-          ),
-        ],
-        backgroundColor: const Color.fromARGB(221, 255, 255, 255),
-        selectedItemColor: const Color.fromARGB(255, 231, 127, 9), 
-        unselectedItemColor: Colors.grey, 
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: _selectedIndex,
+         onTap: _onNavBarItemTapped
+         
       ),
 
     );
