@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:campkit/category_Box/category_row.dart';
+
 
 void main() {
   runApp(CampKitApp());
@@ -119,10 +121,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ), 
 
+
+
               /*-----------------add bar------------ */
               SizedBox(height: 20),
               Container(
-                height: 200,  // Set the height of the Ad Carousel to 150
+                height: 200,  
                 child: PageView.builder(
                   controller: _adController,
                   onPageChanged: (index) {
@@ -166,10 +170,64 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              
+
+
+              /*---------------category bar--------------------- */
+
+              SizedBox(height: 20),
+              const CategoryRow(),
+
             ],
           ),
-        ),        
+        ),
       ),
-    );     
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icon/home.png', 
+              height: 24,
+              width: 24,
+            ),
+            label: 'home',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icon/search.png', 
+              height: 24,
+              width: 24,
+            ),
+            label: 'search',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icon/cart.png', 
+              height: 30,
+              width: 30,
+            ),
+            label: 'cart',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icon/user.png', 
+              height: 24,
+              width: 24,
+            ),
+            label: 'profile',
+          ),
+        ],
+        backgroundColor: const Color.fromARGB(221, 255, 255, 255),
+        selectedItemColor: const Color.fromARGB(255, 231, 127, 9), 
+        unselectedItemColor: Colors.grey, 
+      ),
+
+    );
   }    
 }
+
+
