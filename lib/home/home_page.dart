@@ -1,4 +1,5 @@
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
+import 'package:campkit/category_pages/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 
@@ -43,6 +44,19 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
+
+    switch (index) {
+      case 0:
+        // Stay on the HomePage.
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => TentPage()),
+        );
+        break;
+      // Add other cases for navigation.
+    }
   }
 
   @override

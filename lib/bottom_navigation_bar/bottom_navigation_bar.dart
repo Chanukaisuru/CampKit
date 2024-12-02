@@ -54,7 +54,7 @@ class CustomBottomNavBar extends StatelessWidget {
       icon: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: isSelected ? Color(0xFF277A8C) : Colors.transparent,
+          color: isSelected ? const Color(0xFF277A8C) : Colors.transparent,
           shape: BoxShape.circle,
         ),
         child: Image.asset(
