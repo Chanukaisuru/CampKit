@@ -10,7 +10,7 @@ class TentPage extends StatefulWidget {
 }
 
 class _TentPageState extends State<TentPage> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onNavBarItemTapped(int index) {
     setState(() {
@@ -46,8 +46,12 @@ class _TentPageState extends State<TentPage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: const [
-              Text('Tent page'),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:  const [
+              Text('Available Tents',
+              style: TextStyle(fontSize: 24,
+              fontWeight: FontWeight.bold),
+              ),
             ],
           ),
         ),
