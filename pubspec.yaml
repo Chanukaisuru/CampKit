@@ -76,7 +76,11 @@ flutter:
      - assets/icon/cart.png 
      - assets/icon/home.png
      - assets/icon/user.png
-     - assets/image/4tent.jpg
+     - assets/image/4person.jpg
+     - assets/image/6person.jpeg
+     - assets/image/8person.jpeg
+     - assets/image/10person.jpeg
+
 
      
   #   - images/a_dot_burr.jpeg

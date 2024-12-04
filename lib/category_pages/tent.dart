@@ -1,5 +1,5 @@
-import 'package:campkit/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:campkit/home/home_page.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 
 class TentPage extends StatefulWidget {
@@ -24,8 +24,6 @@ class _TentPageState extends State<TentPage> {
           MaterialPageRoute(builder: (context) => HomePage()),
         );
         break;
-      // Add cases for other indices if navigation to different pages is required.
-
       case 1:
         // Stay on the TentPage
         break;
@@ -40,6 +38,13 @@ class _TentPageState extends State<TentPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String,dynamic>> tents = [
+      {'image': 'assets/image/4person.jpg', 'capacity': '4 person tent', 'price': 500},
+      {'image': 'assets/image/6person.jpeg', 'capacity': '6 person tent', 'price': 800},
+      {'image': 'assets/image/8person.jpeg', 'capacity': '8 person tent', 'price': 1100},
+      {'image': 'assets/image/10person.jpeg', 'capacity': '10 person tent', 'price': 1600},
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -47,28 +52,48 @@ class _TentPageState extends State<TentPage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
-              const Text('Available Tents',
-              style: TextStyle(fontSize: 24,
-              fontWeight: FontWeight.bold),
+            children: [
+              const Text(
+                'Tent',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-
+              const SizedBox(height: 10),
+              // Add categories row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _buildCategoryChip('Tent', true),
+                  const SizedBox(width: 8),
+                  _buildCategoryChip('Back Pack', false),
+                  const SizedBox(width: 8),
+                  _buildCategoryChip('Cooking Item', false),
+                  const SizedBox(width: 8),
+                  _buildCategoryChip('Other', false),
+                ],
+              ),
               const SizedBox(height: 20),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 5, // Replace with the number of tents in your data
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16.0,
+                    mainAxisSpacing: 16.0,
+                    childAspectRatio: 0.75, // Adjust for height
+                  ),
+                  itemCount: tents.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: TentCard(
-                        imageUrl: 'https://example.com/tent.jpg', // Replace with real image URL or use assets
-                        capacity: '4 people',
-                        pricePerDay: 500,
-                        onAddToCart: () {
-                          // Implement add to cart logic
-                          print('Added tent $index to cart');
-                        },
-                      ),
+                    final tent = tents[index];
+                    return TentCard(
+                      imageUrl: tent['image']as String,
+                      capacity: tent['capacity']as String,
+                      pricePerDay: tent['price'] as int,
+                      onAddToCart: () {
+                        // ignore: avoid_print
+                        print('Added ${tent['capacity']} to cart');
+                      },
                     );
                   },
                 ),
@@ -77,71 +102,97 @@ class _TentPageState extends State<TentPage> {
           ),
         ),
       ),
-
-      /*-----------------bottom navigation bar------------------ */
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onNavBarItemTapped,
       ),
     );
   }
+
+  Widget _buildCategoryChip(String label, bool isSelected) {
+    return GestureDetector(
+      onTap: () {
+        // Add logic for category selection if needed
+        print('$label selected');
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.blue : Colors.grey[200],
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-
-class TentCard extends StatelessWidget{
+class TentCard extends StatelessWidget {
   final String imageUrl;
   final String capacity;
   final int pricePerDay;
   final VoidCallback onAddToCart;
 
   const TentCard({
-     required this.imageUrl,
-     required this.capacity,
-     required this.pricePerDay,
-     required this.onAddToCart,
+    required this.imageUrl,
+    required this.capacity,
+    required this.pricePerDay,
+    required this.onAddToCart,
   });
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
-
       elevation: 4,
       child: Container(
-        padding: EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-              imageUrl,
-              height: 120,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                imageUrl,
+                height: 100,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-
-          SizedBox(height: 8),
-          Text(
-            capacity,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16
-            ),
-          ),
-
-           SizedBox(height: 4),
+            const SizedBox(height: 8),
             Text(
-              'Rs. $pricePerDay / day',
+              capacity,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              'with rain cover',
               style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Rs. $pricePerDay/- per day',
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.green,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,
               style: ElevatedButton.styleFrom(
