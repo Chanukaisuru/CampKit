@@ -54,7 +54,7 @@ class _TentPageState extends State<TentPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Tent',
+                'Available Tent',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _TentPageState extends State<TentPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 16.0,
                     mainAxisSpacing: 16.0,
-                    childAspectRatio: 0.75, // Adjust for height
+                    childAspectRatio: 0.65, // Adjust for height
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
@@ -118,7 +118,7 @@ class _TentPageState extends State<TentPage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.grey[200],
+          color: isSelected ? Color(0xFF277A8C) : Colors.grey[200],
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
@@ -189,19 +189,21 @@ class TentCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.green,
+                
               ),
             ),
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFF277A8C), 
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: const Text('Add to Cart'),
+              child: const Text('Add to Cart',
+              style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
