@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:campkit/home/home_page.dart';
+import '../tent/tent_data.dart';
+import '../tent/tent_card.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
+import 'package:campkit/category_Box/category_row.dart';
 
 class TentPage extends StatefulWidget {
   const TentPage({super.key});
@@ -17,34 +19,25 @@ class _TentPageState extends State<TentPage> {
       _selectedIndex = index;
     });
 
+    // Navigation logic based on selected index
     switch (index) {
       case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
+        Navigator.pop(context); // Example to go back to home page
         break;
       case 1:
-        // Stay on the TentPage
+        // Stay on TentPage
         break;
       case 2:
-        // Navigate to CartPage (create if necessary)
+        // Navigate to CartPage (create it if necessary)
         break;
       case 3:
-        // Navigate to ProfilePage (create if necessary)
+        // Navigate to ProfilePage (create it if necessary)
         break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String,dynamic>> tents = [
-      {'image': 'assets/image/4person.jpg', 'capacity': '4 person tent', 'price': 500},
-      {'image': 'assets/image/6person.jpeg', 'capacity': '6 person tent', 'price': 800},
-      {'image': 'assets/image/8person.jpeg', 'capacity': '8 person tent', 'price': 1100},
-      {'image': 'assets/image/10person.jpeg', 'capacity': '10 person tent', 'price': 1600},
-    ];
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -54,26 +47,21 @@ class _TentPageState extends State<TentPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Available Tent',
+                'Available Tents',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 10),
-              // Add categories row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  _buildCategoryChip('Tent', true),
-                  const SizedBox(width: 8),
-                  _buildCategoryChip('Back Pack', false),
-                  const SizedBox(width: 8),
-                  _buildCategoryChip('Cooking Item', false),
-                  const SizedBox(width: 8),
-                  _buildCategoryChip('Other', false),
-                ],
-              ),
+              
+              /*---------------category bar--------------------- */
+
+              SizedBox(height: 20),
+              const CategoryRow(),
+
+              /*end category bar */
+
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
@@ -81,18 +69,18 @@ class _TentPageState extends State<TentPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 16.0,
                     mainAxisSpacing: 16.0,
-                    childAspectRatio: 0.65, // Adjust for height
+                    childAspectRatio: 0.65,
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
                     final tent = tents[index];
                     return TentCard(
-                      imageUrl: tent['image']as String,
-                      capacity: tent['capacity']as String,
-                      pricePerDay: tent['price'] as int,
+                      imageUrl: tent.imageUrl,
+                      capacity: tent.capacity,
+                      pricePerDay: tent.price,
                       onAddToCart: () {
                         // ignore: avoid_print
-                        print('Added ${tent['capacity']} to cart');
+                        print('Added ${tent.capacity} to cart');
                       },
                     );
                   },
@@ -102,9 +90,10 @@ class _TentPageState extends State<TentPage> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(
+     bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-        onTap: _onNavBarItemTapped,
+         onTap: _onNavBarItemTapped
+         
       ),
     );
   }
@@ -127,85 +116,6 @@ class _TentPageState extends State<TentPage> {
             color: isSelected ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class TentCard extends StatelessWidget {
-  final String imageUrl;
-  final String capacity;
-  final int pricePerDay;
-  final VoidCallback onAddToCart;
-
-  const TentCard({
-    required this.imageUrl,
-    required this.capacity,
-    required this.pricePerDay,
-    required this.onAddToCart,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      elevation: 4,
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                imageUrl,
-                height: 100,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              capacity,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-            ),
-            const SizedBox(height: 4),
-            const Text(
-              'with rain cover',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Rs. $pricePerDay/- per day',
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                
-              ),
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: onAddToCart,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF277A8C), 
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: const Text('Add to Cart',
-              style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
         ),
       ),
     );
