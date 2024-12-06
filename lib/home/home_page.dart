@@ -1,5 +1,5 @@
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
-import 'package:campkit/category_pages/tent.dart';
+import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 

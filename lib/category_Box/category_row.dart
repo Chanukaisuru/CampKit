@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'category_button.dart';
 import 'package:campkit/category_pages/other.dart';
-import 'package:campkit/category_pages/tent.dart';
+import 'package:campkit/category_pages/tent/tent.dart';
 
 
 class CategoryRow extends StatefulWidget {
