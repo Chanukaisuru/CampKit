@@ -16,9 +16,11 @@ class Tent {
 }
 
 final List<Tent> tents = [
-  Tent(imageUrl: 'assets/image/4person.jpg', name: 'Manual Tent', capacity: '4 Person ', price: 500, description: 'with rain cover'),
-  Tent(imageUrl: 'assets/image/6person.jpeg', name: 'Auto Tent', capacity: '6 Person', price: 800, description: 'with rain cover'),
-  Tent(imageUrl: 'assets/image/8person.jpeg', name: 'Manual Tent', capacity: '8 Person ', price: 1100, description: 'with rain cover'),
-  Tent(imageUrl: 'assets/image/10person.jpeg', name: 'Manual Tent', capacity: '10 Person ', price: 1600),
-  Tent(imageUrl: 'assets/image/bell_tent.jpg', name: 'Manual Tent', price: 4000),
+  Tent(imageUrl: 'assets/image/backpack1.jpg', name: 'Hydration Pack', capacity: '3L ', price: 500),
+  Tent(imageUrl: 'assets/image/backpack2.jpg', name: 'Camping Backpack', capacity: '70L', price: 800 ),
+  Tent(imageUrl: 'assets/image/backpack3.jpg', name: 'Hiking Backpack', capacity: '80L ', price: 1000),
+  Tent(imageUrl: 'assets/image/backpack4.jpg', name: 'Travel Backpck', capacity: '50L ', price: 700),
+  Tent(imageUrl: 'assets/image/backpack5.jpg', name: 'Traveling Backpack', capacity: '30L ',price: 500),
+  Tent(imageUrl: 'assets/image/backpack6.jpg', name: 'Packing Cubes',  price: 500, description: '8 packs set'),
+  Tent(imageUrl: 'assets/image/backpack7.jpg', name: 'Waist Bag',  price: 800, description: 'WaterProof'),
 ];
