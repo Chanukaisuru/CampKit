@@ -23,6 +23,8 @@ class TentCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
+
+      // card image
       elevation: 4,
       child: Container(
         padding: const EdgeInsets.all(12.0),
@@ -38,7 +40,8 @@ class TentCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-
+            
+            /*-----------------name---------------------- */
             const SizedBox(height: 8),
             Text(
               name,
@@ -47,6 +50,8 @@ class TentCard extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
+
+            /*----------------capacity--------------------------- */
             const SizedBox(height: 8),
             if(capacity !=null)
             Text(
@@ -56,7 +61,8 @@ class TentCard extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-
+            
+            /**-------------description------------------- */
             const SizedBox(height: 8),
             if(description !=null)
             Text(
@@ -67,15 +73,7 @@ class TentCard extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 4),
-            const Text(
-              'with rain cover',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-            ),
-
+            /*---------------------price--------------------*/
             const SizedBox(height: 8),
             Text(
               'Rs. $pricePerDay/- per day',
@@ -95,6 +93,7 @@ class TentCard extends StatelessWidget {
                 ),
               ),
               
+              /*------------------------cart button----------------------- */
               child: const Text(
                 'Add to Cart',
                 style: TextStyle(color: Colors.white),
