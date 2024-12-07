@@ -10,7 +10,7 @@ class BackpacksMain extends StatefulWidget {
   const BackpacksMain({super.key, required this.initialCategory});
 
   @override
-  // ignore: library_private_types_in_public_api
+  
   _BackpackMainState createState() => _BackpackMainState();
 }
 
@@ -73,7 +73,7 @@ class _BackpackMainState extends State<BackpacksMain> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.59, // change card hight
+                    childAspectRatio: 0.50, // change card hight
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
