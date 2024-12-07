@@ -1,4 +1,5 @@
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
+import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
@@ -18,7 +19,14 @@ class CampKitApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomePage(),
+      initialRoute: '/home',
+
+      routes:{
+        '/home':(context) =>HomePage(),
+        '/backpacks':(context) =>BackpacksMain(initialCategory: 'All'),
+        
+        
+      },
     );
   }
 }
