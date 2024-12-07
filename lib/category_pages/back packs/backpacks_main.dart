@@ -11,10 +11,10 @@ class BackpacksMain extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _TentPageState createState() => _TentPageState();
+  _BackpackMainState createState() => _BackpackMainState();
 }
 
-class _TentPageState extends State<BackpacksMain> {
+class _BackpackMainState extends State<BackpacksMain> {
   int _selectedIndex = 0;
 
   void _onNavBarItemTapped(int index) {
@@ -77,16 +77,16 @@ class _TentPageState extends State<BackpacksMain> {
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
-                    final tent = tents[index];
+                    final backpack = tents[index];
                     return BackpacksCard(
-                      imageUrl: tent.imageUrl,
-                      name: tent.name,
-                      capacity: tent.capacity,
-                      pricePerDay: tent.price,
-                      description: tent.description,
+                      imageUrl: backpack.imageUrl,
+                      name: backpack.name,
+                      capacity: backpack.capacity,
+                      pricePerDay: backpack.price,
+                      description: backpack.description,
                       onAddToCart: () {
                         // ignore: avoid_print
-                        print('Added ${tent.capacity} to cart');
+                        print('Added ${backpack.capacity} to cart');
                       },
                     );
                   },
