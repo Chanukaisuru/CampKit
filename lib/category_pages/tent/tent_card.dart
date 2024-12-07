@@ -52,7 +52,7 @@ class TentCard extends StatelessWidget {
             ),
 
             /*----------------capacity--------------------------- */
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             if(capacity !=null)
             Text(
               capacity!,
@@ -63,7 +63,7 @@ class TentCard extends StatelessWidget {
             ),
             
             /**-------------description------------------- */
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             if(description !=null)
             
             Text(
@@ -75,7 +75,7 @@ class TentCard extends StatelessWidget {
             ),
 
             /*---------------------price--------------------*/
-            const SizedBox(height: 8),
+            const SizedBox(height: 5),
             Text(
               'Rs. $pricePerDay/- per day',
               style: const TextStyle(
