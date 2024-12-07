@@ -25,6 +25,7 @@ class CampKitApp extends StatelessWidget {
 
 class HomePage extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -168,7 +169,7 @@ class _HomePageState extends State<HomePage> {
               /*-----------------add bar------------ */
 
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 height: 200,  
                 child: PageView.builder(
                   controller: _adController,

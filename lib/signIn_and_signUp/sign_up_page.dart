@@ -201,7 +201,7 @@ class _SignUpPageState extends State<SignUpPage> {
       onTap: () {
         // Handle social login
       },
-      child: Container(
+      child: SizedBox(
         width: size,
         height: size,
         child: Image.asset(

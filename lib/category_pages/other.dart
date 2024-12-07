@@ -5,6 +5,7 @@ class OtherPage extends StatefulWidget {
   const OtherPage({super.key, required String initialCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OtherPageState createState() => _OtherPageState();
 }
 

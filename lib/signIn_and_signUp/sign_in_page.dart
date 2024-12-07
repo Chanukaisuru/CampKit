@@ -193,7 +193,7 @@ class _SignInPageState extends State<SignInPage> {
       onTap: () {
         // Handle social login
       },
-      child: Container(
+      child: SizedBox(
         width: size, // Set width based on parameter
         height: size, // Set height based on parameter
         child: Image.asset(

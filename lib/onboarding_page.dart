@@ -3,7 +3,7 @@ import 'signIn_and_signUp/sign_up_page.dart';
 
 
 class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({Key? key}) : super(key: key);
+  const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {

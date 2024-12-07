@@ -7,9 +7,10 @@ import 'package:campkit/category_Box/category_row.dart';
 class TentPage extends StatefulWidget {
   final String initialCategory;
 
-  const TentPage({Key?key, required this.initialCategory}):super(key:key);
+  const TentPage({super.key, required this.initialCategory});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TentPageState createState() => _TentPageState();
 }
 

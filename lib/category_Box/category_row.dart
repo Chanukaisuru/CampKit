@@ -6,7 +6,7 @@ import 'package:campkit/category_pages/tent/tent.dart';
 
 class CategoryRow extends StatefulWidget {
   final String selectedCategory;
-  const CategoryRow({Key? key, required this.selectedCategory}) : super(key: key);
+  const CategoryRow({super.key, required this.selectedCategory});
 
   @override
   _CategoryRowState createState() => _CategoryRowState();
