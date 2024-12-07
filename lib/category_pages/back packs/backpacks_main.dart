@@ -15,7 +15,7 @@ class BackpacksMain extends StatefulWidget {
 }
 
 class _BackpackMainState extends State<BackpacksMain> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onNavBarItemTapped(int index) {
     setState(() {
