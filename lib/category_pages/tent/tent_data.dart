@@ -13,9 +13,9 @@ class Tent {
 }
 
 final List<Tent> tents = [
-  Tent(imageUrl: 'assets/image/4person.jpg', name: 'Manual Tent', capacity: '4 Person Tent', price: 500),
-  Tent(imageUrl: 'assets/image/6person.jpeg', name: 'Manual Tent', capacity: '6 Person Tent', price: 800),
-  Tent(imageUrl: 'assets/image/8person.jpeg', name: 'Manual Tent', capacity: '8 Person Tent', price: 1100),
-  Tent(imageUrl: 'assets/image/10person.jpeg', name: 'Manual Tent', capacity: '10 Person Tent', price: 1600),
+  Tent(imageUrl: 'assets/image/4person.jpg', name: 'Manual Tent', capacity: '4 Person ', price: 500),
+  Tent(imageUrl: 'assets/image/6person.jpeg', name: 'Auto Tent', capacity: '6 Person', price: 800),
+  Tent(imageUrl: 'assets/image/8person.jpeg', name: 'Manual Tent', capacity: '8 Person ', price: 1100),
+  Tent(imageUrl: 'assets/image/10person.jpeg', name: 'Manual Tent', capacity: '10 Person ', price: 1600),
 ];
 
