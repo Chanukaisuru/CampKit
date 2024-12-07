@@ -101,26 +101,4 @@ class _TentPageState extends State<TentPage> {
     );
   }
 
-  Widget _buildCategoryChip(String label, bool isSelected) {
-    return GestureDetector(
-      onTap: () {
-        // Add logic for category selection if needed
-        print('$label selected');
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSelected ? Color(0xFF277A8C) : Colors.grey[200],
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
 }
