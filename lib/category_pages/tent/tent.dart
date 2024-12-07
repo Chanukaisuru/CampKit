@@ -5,7 +5,9 @@ import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 
 class TentPage extends StatefulWidget {
-  const TentPage({super.key});
+  final String initialCategory;
+
+  const TentPage({Key?key, required this.initialCategory}):super(key:key);
 
   @override
   _TentPageState createState() => _TentPageState();
@@ -58,7 +60,8 @@ class _TentPageState extends State<TentPage> {
               /*---------------category bar--------------------- */
 
               SizedBox(height: 20),
-              const CategoryRow(),
+               CategoryRow(selectedCategory: widget.initialCategory),
+
 
               /*end category bar */
 
