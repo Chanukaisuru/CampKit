@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class TentCard extends StatelessWidget {
   final String imageUrl;
+  final String name;
   final String capacity;
   final int pricePerDay;
   final VoidCallback onAddToCart;
 
   const TentCard({
     required this.imageUrl,
+    required this.name,
     required this.capacity,
     required this.pricePerDay,
     required this.onAddToCart,
@@ -32,6 +34,15 @@ class TentCard extends StatelessWidget {
                 height: 100,
                 width: double.infinity,
                 fit: BoxFit.cover,
+              ),
+            ),
+
+            const SizedBox(height: 8),
+            Text(
+              name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
               ),
             ),
             const SizedBox(height: 8),
