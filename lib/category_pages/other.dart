@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 
 class OtherPage extends StatefulWidget {
-  const OtherPage({super.key});
+  const OtherPage({super.key, required String initialCategory});
 
   @override
   _OtherPageState createState() => _OtherPageState();
