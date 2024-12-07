@@ -41,6 +41,7 @@ void initState() {
             ),
         );
         break;   
+        
       case "Other":
         Navigator.push(
           context,
