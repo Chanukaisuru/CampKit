@@ -79,6 +79,7 @@ class _TentPageState extends State<TentPage> {
                     final tent = tents[index];
                     return TentCard(
                       imageUrl: tent.imageUrl,
+                      name: tent.name,
                       capacity: tent.capacity,
                       pricePerDay: tent.price,
                       onAddToCart: () {
