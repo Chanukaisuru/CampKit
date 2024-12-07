@@ -35,7 +35,7 @@ class BackpacksCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
                 imageUrl,
-                height: 100,
+                height: 165,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
