@@ -83,6 +83,7 @@ class _TentPageState extends State<TentPage> {
                       name: tent.name,
                       capacity: tent.capacity,
                       pricePerDay: tent.price,
+                      description: tent.description,
                       onAddToCart: () {
                         // ignore: avoid_print
                         print('Added ${tent.capacity} to cart');
