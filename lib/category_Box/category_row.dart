@@ -1,3 +1,4 @@
+import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:flutter/material.dart';
 import 'category_button.dart';
 import 'package:campkit/category_pages/other.dart';
@@ -31,6 +32,15 @@ void initState() {
             ),
         );
         break;
+
+      case "Backpack":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BackpacksMain(initialCategory: category),
+            ),
+        );
+        break;   
       case "Other":
         Navigator.push(
           context,
