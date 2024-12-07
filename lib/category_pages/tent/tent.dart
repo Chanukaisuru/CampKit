@@ -70,9 +70,9 @@ class _TentPageState extends State<TentPage> {
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 16.0,
-                    mainAxisSpacing: 16.0,
-                    childAspectRatio: 0.65,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 12.0,
+                    childAspectRatio: 0.59, // change card hight
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
