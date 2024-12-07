@@ -23,14 +23,14 @@ class TentCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
-
-      // card image
+       
       elevation: 4,
       child: Container(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            /*------------card image-------------------- */
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -82,7 +82,8 @@ class TentCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
+            
+            /*------------------------cart button----------------------- */
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,
@@ -93,7 +94,7 @@ class TentCard extends StatelessWidget {
                 ),
               ),
               
-              /*------------------------cart button----------------------- */
+              
               child: const Text(
                 'Add to Cart',
                 style: TextStyle(color: Colors.white),
