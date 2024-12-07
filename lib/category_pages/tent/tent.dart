@@ -15,7 +15,7 @@ class TentPage extends StatefulWidget {
 }
 
 class _TentPageState extends State<TentPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onNavBarItemTapped(int index) {
     setState(() {
