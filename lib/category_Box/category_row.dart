@@ -5,27 +5,36 @@ import 'package:campkit/category_pages/tent/tent.dart';
 
 
 class CategoryRow extends StatefulWidget {
-  const CategoryRow({Key? key}) : super(key: key);
+  final String selectedCategory;
+  const CategoryRow({Key? key, required this.selectedCategory}) : super(key: key);
 
   @override
   _CategoryRowState createState() => _CategoryRowState();
 }
 
 class _CategoryRowState extends State<CategoryRow> {
-  String _selectedCategory = "Populer";
+  late String _selectedCategory ;
+
+  @override
+void initState() {
+  super.initState();
+  _selectedCategory = widget.selectedCategory; // Use the correct property
+}
 
   void _navigateToPage(String category) {
     switch (category) {
       case "Tent":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => TentPage()),
+          MaterialPageRoute(
+            builder: (context) => TentPage(initialCategory: category),
+            ),
         );
         break;
       case "Other":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => OtherPage()),
+          MaterialPageRoute(builder: (context) => OtherPage(initialCategory: category)),
         );
         break;
       // Add other cases if needed
