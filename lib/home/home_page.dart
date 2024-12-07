@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => TentPage()),
+          MaterialPageRoute(builder: (context) => TentPage(initialCategory: "Tent")),
         );
         break;
       // Add other cases for navigation.
@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
               /*---------------category bar--------------------- */
 
               SizedBox(height: 20),
-              const CategoryRow(),
+              const CategoryRow(selectedCategory: "Popular"),
 
             ],
           ),
