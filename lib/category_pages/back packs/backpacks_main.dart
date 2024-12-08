@@ -3,6 +3,8 @@ import '../back packs/backpacks_card.dart';
 import '../back packs/backpacks_data.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
+import 'package:campkit/home/search_bar.dart' as custom;
+
 
 class BackpacksMain extends StatefulWidget {
   final String initialCategory;
@@ -63,8 +65,20 @@ class _BackpackMainState extends State<BackpacksMain> {
               SizedBox(height: 20),
                CategoryRow(selectedCategory: widget.initialCategory),
 
-
               /*end category bar */
+
+
+              
+              /*-----------------Search bar-------------------*/
+
+              
+              const SizedBox(height: 20),
+              custom.SearchBar(
+                onChanged: (value) {
+                  // Handle search input
+                  print("Search input: $value");
+                },
+              ),
 
               const SizedBox(height: 20),
               Expanded(
