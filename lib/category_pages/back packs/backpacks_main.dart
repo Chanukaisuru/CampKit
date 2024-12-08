@@ -51,17 +51,38 @@ class _BackpackMainState extends State<BackpacksMain> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Available Backpacks',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+
+              /*--------------back icon-------------- */
+              Row(  
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icon/left-arrow.png',
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
+
+              /*------------End of the back icon--------------- */
+                  
+                  
+                  const SizedBox(width: 10,),
+                  const Text(
+                    'Available Backpacks',
+                    style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
+              
               
               /*---------------category bar--------------------- */
-
+              const SizedBox(height: 10),
               SizedBox(height: 20),
                CategoryRow(selectedCategory: widget.initialCategory),
 
