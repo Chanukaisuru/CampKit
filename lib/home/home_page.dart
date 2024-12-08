@@ -3,6 +3,7 @@ import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
+import 'package:campkit/home/search_bar.dart';
 
 
 void main() {
@@ -130,8 +131,14 @@ class _HomePageState extends State<HomePage> {
 
               /*-----------------Search bar-------------------*/
 
-              SizedBox(height: 20),
               
+              const SizedBox(height: 20),
+              SearchBar(
+                onChanged: (value) {
+                  // Handle search input
+                  print("Search input: $value");
+                },
+              ),
 
 
 
