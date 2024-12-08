@@ -50,14 +50,34 @@ class _TentPageState extends State<TentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Available Tents',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              /*--------------back icon-------------- */
+              Row(  
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icon/left-arrow.png',
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
+
+              /*------------End of the back icon--------------- */
+                  
+                  
+                  const SizedBox(width: 10,),
+                  const Text(
+                    'Available Backpacks',
+                    style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
+              
               
               /*---------------category bar--------------------- */
 
