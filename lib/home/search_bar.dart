@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
-  final String hintText;
-  final ValueChanged<String>? onChanged;
+  final ValueChanged<String> onChanged;
 
-  const SearchBar({
-    Key? key,
-    this.hintText = "Search here",
-    this.onChanged,
-  }) : super(key: key);
+  const SearchBar({Key? key, required this.onChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +23,15 @@ class SearchBar extends StatelessWidget {
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: "Search here",
           hintStyle: TextStyle(color: Colors.grey),
           prefixIcon: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Image.asset(
-              'assets/icon/search.png',
-              width: 20,
-              height: 20,
-              color: const Color.fromARGB(255, 121, 120, 120),
-              fit: BoxFit.contain,
-            ),
+            child: Icon(Icons.search, color: Colors.grey),
           ),
           filled: true,
           fillColor: Colors.transparent,
-          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+          contentPadding: EdgeInsets.symmetric(vertical: 16),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide.none,

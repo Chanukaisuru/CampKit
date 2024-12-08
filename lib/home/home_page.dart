@@ -3,7 +3,8 @@ import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
-import 'package:campkit/home/search_bar.dart';
+import 'package:campkit/home/search_bar.dart' as custom;
+
 
 
 void main() {
@@ -71,6 +72,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -133,7 +135,7 @@ class _HomePageState extends State<HomePage> {
 
               
               const SizedBox(height: 20),
-              SearchBar(
+              custom.SearchBar(
                 onChanged: (value) {
                   // Handle search input
                   print("Search input: $value");
