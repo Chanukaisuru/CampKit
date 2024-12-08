@@ -27,7 +27,12 @@ class SearchBar extends StatelessWidget {
           hintStyle: TextStyle(color: Colors.grey),
           prefixIcon: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Icon(Icons.search, color: Colors.grey),
+            child: Image.asset(
+              'assets/icon/search.png',
+              width: 24,
+              height: 24,
+              color: Colors.grey,
+            ),
           ),
           filled: true,
           fillColor: Colors.transparent,
