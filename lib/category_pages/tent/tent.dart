@@ -3,6 +3,7 @@ import '../tent/tent_data.dart';
 import '../tent/tent_card.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
+import 'package:campkit/home/search_bar.dart' as custom;
 
 class TentPage extends StatefulWidget {
   final String initialCategory;
@@ -63,9 +64,22 @@ class _TentPageState extends State<TentPage> {
               SizedBox(height: 20),
                CategoryRow(selectedCategory: widget.initialCategory),
 
-
               /*end category bar */
 
+
+              /*-----------------Search bar-------------------*/
+
+              
+              const SizedBox(height: 20),
+              custom.SearchBar(
+                onChanged: (value) {
+                  // Handle search input
+                  print("Search input: $value");
+                },
+              ),
+              
+
+              /*---------------------tent card-------------------------- */
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
