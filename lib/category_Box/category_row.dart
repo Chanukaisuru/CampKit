@@ -43,7 +43,7 @@ void initState() {
         );
         break;
 
-      case "CookingItem":
+      case "Cooking Item":
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -64,7 +64,7 @@ void initState() {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = ["Populer", "Tent", "Backpack", "CookingItem", "Other"];
+    final List<String> categories = ["Populer", "Tent", "Backpack", "Cooking Item", "Other"];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
