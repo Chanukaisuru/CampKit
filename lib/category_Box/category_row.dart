@@ -1,5 +1,6 @@
 import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:campkit/category_pages/cooking%20item/cooking_item_page.dart';
+import 'package:campkit/category_pages/light/light_page.dart';
 import 'package:flutter/material.dart';
 import 'category_button.dart';
 import 'package:campkit/category_pages/other.dart';
@@ -52,6 +53,15 @@ void initState() {
         );
         break;
 
+      case "Light":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LightPage(initialCategory: category),
+          ),
+        );
+        break;
+
       case "Other":
         Navigator.push(
           context,
@@ -64,7 +74,7 @@ void initState() {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> categories = ["Populer", "Tent", "Backpack", "Cooking Item", "Other"];
+    final List<String> categories = ["Popular", "Tent", "Backpack", "Cooking Item", "Light", "Other"];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

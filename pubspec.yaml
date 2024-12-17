@@ -94,6 +94,10 @@ flutter:
      - assets/image/item3.jpg
      - assets/image/item4.jpg
      - assets/image/item5.jpg
+     - assets/image/light1.jpg
+     - assets/image/light2.jpg
+     - assets/image/light3.jpg
+     - assets/image/light4.jpg
 
 
      
