@@ -98,7 +98,7 @@ class _CookingItemPageState extends State<CookingItemPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.59, // change card height
+                    childAspectRatio: 0.53, // change card height
                   ),
                   itemCount: cookingItems.length, // List of cooking items
                   itemBuilder: (context, index) {

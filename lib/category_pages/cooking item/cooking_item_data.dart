@@ -13,9 +13,9 @@ class CookingItem {
 }
 
 List<CookingItem> cookingItems = [
-  CookingItem(imageUrl: 'assets/image/item1.jpg', name: 'Cooking Pot', description: 'A large pot for cooking', price: 1200, ),
-  CookingItem(imageUrl: 'assets/image/item2.jpg', name: 'Grill Set', description: 'Grill for outdoor cooking', price: 1500, ),
-  CookingItem(imageUrl: 'assets/image/item3.jpg', name: 'Knife Set', description: 'Stainless steel knives', price: 1500, ),
-  CookingItem(imageUrl: 'assets/image/item4.jpg', name: 'Cutting Board', description: 'Cutting board for food preparation', price: 800, ),
-  CookingItem(imageUrl: 'assets/image/item5.jpg', name: 'Cast Iron Skillet', description: 'Heavy-duty skillet for frying', price: 2000, ),
+  CookingItem(imageUrl: 'assets/image/item1.jpg', name: 'Cooking Pot', description: 'A large pot for cooking', price: 200, ),
+  CookingItem(imageUrl: 'assets/image/item2.png', name: 'Grill Set', description: 'Grill for outdoor cooking', price: 500, ),
+  CookingItem(imageUrl: 'assets/image/item3.jpg', name: 'Knife Set', description: 'Stainless steel knives', price: 300, ),
+  CookingItem(imageUrl: 'assets/image/item4.jpg', name: 'Cutting Board', description: 'Cutting board for food preparation', price: 100, ),
+  CookingItem(imageUrl: 'assets/image/item5.jpg', name: 'Cast Iron Skillet', description: 'Heavy-duty skillet for frying', price: 100, ),
 ];
