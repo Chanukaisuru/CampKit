@@ -1,11 +1,10 @@
 import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
 import 'package:campkit/category_pages/cooking%20item/cooking_item_page.dart';
 import 'package:campkit/category_pages/light/light_page.dart';
+import 'package:campkit/category_pages/other/other_page.dart';
 import 'package:flutter/material.dart';
 import 'category_button.dart';
-import 'package:campkit/category_pages/other.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
-
 
 class CategoryRow extends StatefulWidget {
   final String selectedCategory;
@@ -65,7 +64,8 @@ void initState() {
       case "Other":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => OtherPage(initialCategory: category)),
+          MaterialPageRoute
+            (builder: (context) => OtherPage(initialCategory: category)),
         );
         break;
       // Add other cases if needed

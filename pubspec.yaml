@@ -98,7 +98,14 @@ flutter:
      - assets/image/light2.jpg
      - assets/image/light3.jpg
      - assets/image/light4.jpg
-
+     - assets/image/other1.jpg
+     - assets/image/other2.jpg
+     - assets/image/other3.png
+     - assets/image/other4.png
+     - assets/image/other5.png
+     - assets/image/other6.jpg
+     - assets/image/other7.jpg
+     - assets/image/other8.jpg
 
      
   #   - images/a_dot_burr.jpeg
