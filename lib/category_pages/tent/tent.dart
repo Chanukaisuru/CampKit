@@ -5,6 +5,7 @@ import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'package:campkit/home/home_page.dart';
+import 'package:campkit/cart/cart_page.dart';
 
 class TentPage extends StatefulWidget {
   final String initialCategory;
