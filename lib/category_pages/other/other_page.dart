@@ -4,6 +4,7 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'other_card.dart';
 import 'other_data.dart';
+import 'package:campkit/home/home_page.dart';
 
 class OtherPage extends StatefulWidget {
   final String initialCategory;
