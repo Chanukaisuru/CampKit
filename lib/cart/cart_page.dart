@@ -92,10 +92,40 @@ class _MyCartPageState extends State<MyCartPage> {
                       price: 500,
                     ),
 
+                    SizedBox(height: 16),
+                    CartItem(
+                      image: 'assets/image/4person.jpg',
+                      title: 'Gas Canister', 
+                      subtitle: 'Can cook 2 hours',
+                      price: 1000
+                    ),                   
                   ],
                 ),
-                ),
+              ),
 
+              /*-------------Action:selleact all and Delete----------------- */
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {}, 
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                      
+                    child: Text('Select All',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
+                  
+              ),
             ],
           ),
         ),
