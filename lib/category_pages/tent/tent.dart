@@ -4,6 +4,7 @@ import '../tent/tent_card.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
+import 'package:campkit/home/home_page.dart';
 
 class TentPage extends StatefulWidget {
   final String initialCategory;
@@ -23,7 +24,26 @@ class _TentPageState extends State<TentPage> {
       _selectedIndex = index;
     });
 
-    
+     switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => TentPage(initialCategory: "Tent")),
+        );
+        break;
+      case 2:
+        // Stay on the CartPage.
+        break;
+      case 3:
+        // Navigate to the Profile page or other pages if implemented.
+        break;
+    }
   }
 
   @override
