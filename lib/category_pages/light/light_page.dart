@@ -4,6 +4,7 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'light_card.dart';
 import 'light_data.dart';
+import 'package:campkit/home/home_page.dart';
 
 class LightPage extends StatefulWidget {
   final String initialCategory;
@@ -26,7 +27,10 @@ class _LightPageState extends State<LightPage> {
     // Navigation logic based on selected index
     switch (index) {
       case 0:
-        Navigator.pop(context); // Navigate back to home page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
         break;
       case 1:
       // Stay on LightPage
