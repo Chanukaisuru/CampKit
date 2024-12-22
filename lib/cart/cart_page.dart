@@ -77,10 +77,25 @@ class _MyCartPageState extends State<MyCartPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                 ],
               ),
-              // Add cart-specific content here if needed.
+              
+              SizedBox(height: 16),
+              /*--------------Cart items--------------*/
+              Expanded(
+                child: ListView(
+                  children: [
+                     CartItem(
+                      image: 'assets/image/4person.jpg',
+                      title: '4 person tent',
+                      subtitle: 'with rain cover\nRs.500/- per day',
+                      price: 500,
+                    ),
+
+                  ],
+                ),
+                ),
+
             ],
           ),
         ),
@@ -89,6 +104,80 @@ class _MyCartPageState extends State<MyCartPage> {
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onNavBarItemTapped,
+      ),
+    );
+  }
+}
+
+
+/* ----------cart item Widget--------------- */
+
+class CartItem extends StatelessWidget {
+  final String image;
+  final String title;
+  final String subtitle;
+  final int price;
+
+  const CartItem({
+    
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding:  EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade200,blurRadius: 5),
+        ],
+      ),
+      child: Row(
+        children: [
+            Checkbox(value: true, onChanged: (value) {}),
+            Image.asset(image, width: 100, height: 100,fit: BoxFit.cover),
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),    
+                ],
+              ),            
+            ),
+
+            /*Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(onPressed: (){}, 
+                    icon: Icon(Icons.remove_circle_outline, color: Colors.grey),
+                    )
+                  ],
+                ),
+              ],
+            ),*/
+        ],
       ),
     );
   }
