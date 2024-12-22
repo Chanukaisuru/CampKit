@@ -4,6 +4,7 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'cooking_item_card.dart';
 import 'cooking_item_data.dart';
+import 'package:campkit/home/home_page.dart';
 
 class CookingItemPage extends StatefulWidget {
   final String initialCategory;
