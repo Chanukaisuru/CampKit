@@ -5,6 +5,7 @@ import 'package:campkit/home/search_bar.dart' as custom;
 import 'light_card.dart';
 import 'light_data.dart';
 import 'package:campkit/home/home_page.dart';
+import 'package:campkit/cart/cart_page.dart';
 
 class LightPage extends StatefulWidget {
   final String initialCategory;
@@ -36,7 +37,10 @@ class _LightPageState extends State<LightPage> {
       // Stay on LightPage
         break;
       case 2:
-      // Navigate to CartPage (create it if necessary)
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
+        );
         break;
       case 3:
       // Navigate to ProfilePage (create it if necessary)
