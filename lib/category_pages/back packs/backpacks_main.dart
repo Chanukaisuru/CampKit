@@ -1,3 +1,4 @@
+import 'package:campkit/cart/cart_page.dart';
 import 'package:flutter/material.dart';
 import '../back packs/backpacks_card.dart';
 import '../back packs/backpacks_data.dart';
@@ -33,7 +34,10 @@ class _BackpackMainState extends State<BackpacksMain> {
         // Stay on TentPage
         break;
       case 2:
-        // Navigate to CartPage (create it if necessary)
+         Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
+        );
         break;
       case 3:
         // Navigate to ProfilePage (create it if necessary)
