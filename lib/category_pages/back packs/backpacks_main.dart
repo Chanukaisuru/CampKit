@@ -35,7 +35,7 @@ class _BackpackMainState extends State<BackpacksMain> {
         );
         break;
       case 1:
-        // Stay on TentPage
+        // Stay on backpacks page
         break;
       case 2:
          Navigator.pushReplacement(

@@ -32,13 +32,13 @@ class _TentPageState extends State<TentPage> {
         );
         break;
       case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => TentPage(initialCategory: "Tent")),
-        );
+       // Stay on TentPage
         break;
       case 2:
-        // Stay on the CartPage.
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
+        );
         break;
       case 3:
         // Navigate to the Profile page or other pages if implemented.
