@@ -35,7 +35,10 @@ class _CookingItemPageState extends State<CookingItemPage> {
       // Stay on CookingItemPage
         break;
       case 2:
-      // Navigate to CartPage (create it if necessary)
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
+        );
         break;
       case 3:
       // Navigate to ProfilePage (create it if necessary)
