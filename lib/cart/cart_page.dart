@@ -119,7 +119,6 @@ class CartItem extends StatelessWidget {
   final int price;
 
   const CartItem({
-    
     required this.image,
     required this.title,
     required this.subtitle,
@@ -129,72 +128,98 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.all(12),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade200,blurRadius: 5),
+            color: Colors.grey.shade200,
+            blurRadius: 5,
+          ),
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-            Checkbox(value: true, onChanged: (value) {}),
-            Image.asset(image, width: 100, height: 100,fit: BoxFit.cover),
-            SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      ),
-                    ),
+          // Checkbox
+          Checkbox(value: true, onChanged: (value) {}),
 
-                    SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),    
-                ],
-              ),            
-            ),
+          // Image of the item
+          Image.asset(
+            image,
+            width: 130,
+            height: 130,
+            fit: BoxFit.cover,
+          ),
 
-            Column(
+          SizedBox(width: 20),
+
+          // Item description (title, subtitle, and actions)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Title
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4),
+
+                // Subtitle
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                SizedBox(height: 8),
+
+                // Price
+                Text(
+                  'Rs.$price/-',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+                SizedBox(height: 12),
+
+                // Add/Remove Icons and Quantity
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: (){},
-                      child:Image.asset(
+                      onTap: () {},
+                      child: Image.asset(
                         'assets/icon/remove.png',
-                        width: 24,
-                        height: 24,
+                        width: 35,
+                        height: 35,
                       ),
                     ),
-
-                    SizedBox(width: 8),
-
-                    Text('1',style:TextStyle(fontSize: 16)),
-                    SizedBox(width: 8),
+                    SizedBox(width: 15),
+                    Text(
+                      '1',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    SizedBox(width: 15),
                     GestureDetector(
-                      onTap:() {},
-                        child: Image.asset(
-                          'assets/icon/add.png',
-                          width: 24,
-                          height: 24,
-                        ),
+                      onTap: () {},
+                      child: Image.asset(
+                        'assets/icon/add.png',
+                        width: 32,
+                        height: 32,
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
+          ),
         ],
       ),
     );
