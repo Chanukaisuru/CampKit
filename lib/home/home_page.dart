@@ -4,6 +4,7 @@ import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
+import 'package:campkit/cart/cart_page.dart';
 
 
 
@@ -66,6 +67,14 @@ class _HomePageState extends State<HomePage> {
           MaterialPageRoute(builder: (context) => TentPage(initialCategory: "Tent")),
         );
         break;
+
+      case 2:
+      // Navigate to the Cart page.
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
+      );
+      break;
       // Add other cases for navigation.
     }
   }
