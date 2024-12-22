@@ -26,7 +26,10 @@ class _OtherPageState extends State<OtherPage> {
     // Navigation logic based on selected index
     switch (index) {
       case 0:
-        Navigator.pop(context); // Navigate back to home page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
         break;
       case 1:
       // Stay on OtherPage
