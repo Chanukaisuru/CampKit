@@ -166,17 +166,22 @@ class CartItem extends StatelessWidget {
               ),            
             ),
 
-            /*Column(
+            Column(
               children: [
                 Row(
                   children: [
-                    IconButton(onPressed: (){}, 
-                    icon: Icon(Icons.remove_circle_outline, color: Colors.grey),
-                    )
+                    GestureDetector(
+                      onTap: (){},
+                      child:Image.asset(
+                        'assets/icon/remove.png',
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
                   ],
                 ),
               ],
-            ),*/
+            ),
         ],
       ),
     );
