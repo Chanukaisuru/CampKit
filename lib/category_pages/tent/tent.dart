@@ -23,21 +23,7 @@ class _TentPageState extends State<TentPage> {
       _selectedIndex = index;
     });
 
-    // Navigation logic based on selected index
-    switch (index) {
-      case 0:
-        Navigator.pop(context); // Example to go back to home page
-        break;
-      case 1:
-        // Stay on TentPage
-        break;
-      case 2:
-        // Navigate to CartPage (create it if necessary)
-        break;
-      case 3:
-        // Navigate to ProfilePage (create it if necessary)
-        break;
-    }
+    
   }
 
   @override
