@@ -67,6 +67,17 @@ class _MyCartPageState extends State<MyCartPage> {
                       height: 24,
                     ),
                   ),
+
+                  /*--------------Title--------------*/
+                  SizedBox(width: 16),
+                  Text(
+                    'My Cart',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
                 ],
               ),
               // Add cart-specific content here if needed.
