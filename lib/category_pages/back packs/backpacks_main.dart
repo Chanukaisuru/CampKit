@@ -5,6 +5,7 @@ import '../back packs/backpacks_data.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
+import 'package:campkit/home/home_page.dart';
 
 
 class BackpacksMain extends StatefulWidget {
@@ -28,7 +29,10 @@ class _BackpackMainState extends State<BackpacksMain> {
     // Navigation logic based on selected index
     switch (index) {
       case 0:
-        Navigator.pop(context); // Example to go back to home page
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
         break;
       case 1:
         // Stay on TentPage
