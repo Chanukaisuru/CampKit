@@ -178,6 +178,19 @@ class CartItem extends StatelessWidget {
                         height: 24,
                       ),
                     ),
+
+                    SizedBox(width: 8),
+
+                    Text('1',style:TextStyle(fontSize: 16)),
+                    SizedBox(width: 8),
+                    GestureDetector(
+                      onTap:() {},
+                        child: Image.asset(
+                          'assets/icon/add.png',
+                          width: 24,
+                          height: 24,
+                        ),
+                    ),
                   ],
                 ),
               ],
