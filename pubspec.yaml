@@ -106,6 +106,8 @@ flutter:
      - assets/image/other6.jpg
      - assets/image/other7.jpg
      - assets/image/other8.jpg
+     - assets/icon/remove.png
+     - assets/icon/add.png
 
      
   #   - images/a_dot_burr.jpeg
