@@ -16,8 +16,6 @@ class MyCartPage extends StatefulWidget {
 class _MyCartPageState extends State<MyCartPage> {
   int _selectedIndex = 2;
 
-  
-
 
   @override
   Widget build(BuildContext context) {

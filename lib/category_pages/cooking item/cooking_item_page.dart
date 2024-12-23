@@ -4,8 +4,7 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'cooking_item_card.dart';
 import 'cooking_item_data.dart';
-import 'package:campkit/home/home_page.dart';
-import 'package:campkit/cart/cart_page.dart';
+import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
 class CookingItemPage extends StatefulWidget {
   final String initialCategory;
@@ -20,33 +19,6 @@ class CookingItemPage extends StatefulWidget {
 class _CookingItemPageState extends State<CookingItemPage> {
   int _selectedIndex = 1;
 
-  void _onNavBarItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    // Navigation logic based on selected index
-    switch (index) {
-      case 0:
-         Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-        break;
-      case 1:
-      // Stay on CookingItemPage
-        break;
-      case 2:
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
-        );
-        break;
-      case 3:
-      // Navigate to ProfilePage (create it if necessary)
-        break;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +102,7 @@ class _CookingItemPageState extends State<CookingItemPage> {
       ),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-        onTap: _onNavBarItemTapped,
+        onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
       ),
     );
   }
