@@ -54,7 +54,7 @@ class _MyCartPageState extends State<MyCartPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------Back icon--------------*/
+              /*--------------Back icon and Title--------------*/
               Row(
                 children: [
                   GestureDetector(
@@ -67,8 +67,6 @@ class _MyCartPageState extends State<MyCartPage> {
                       height: 24,
                     ),
                   ),
-
-                  /*--------------Title--------------*/
                   SizedBox(width: 16),
                   Text(
                     'My Cart',
@@ -79,52 +77,49 @@ class _MyCartPageState extends State<MyCartPage> {
                   ),
                 ],
               ),
-              
               SizedBox(height: 16),
-              /*--------------Cart items--------------*/
-              Expanded(
-                child: ListView(
-                  children: [
-                     CartItem(
-                      image: 'assets/image/4person.jpg',
-                      title: '4 person tent',
-                      subtitle: 'with rain cover\nRs.500/- per day',
-                      price: 500,
-                    ),
 
-                    SizedBox(height: 16),
-                    CartItem(
-                      image: 'assets/image/4person.jpg',
-                      title: 'Gas Canister', 
-                      subtitle: 'Can cook 2 hours',
-                      price: 1000
-                    ),                   
-                  ],
+              /* --------------Cart Items Box-------------- */
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade200,
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: ListView(
+                    children: [
+                      CartItem(
+                        image: 'assets/image/4person.jpg',
+                        title: '4 Person Tent',
+                        subtitle: 'with rain cover\nRs.500/- per day',
+                        price: 500,
+                      ),
+                      SizedBox(height: 16),
+                      CartItem(
+                        image: 'assets/image/4person.jpg',
+                        title: 'Gas Canister',
+                        subtitle: 'Can cook 2 hours',
+                        price: 1000,
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
-              /*-------------Action:selleact all and Delete----------------- */
+              SizedBox(height: 16),
+
+              /* --------------Action Buttons-------------- */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () {}, 
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                      
-                    child: Text('Select All',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-
-                    ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
@@ -132,7 +127,24 @@ class _MyCartPageState extends State<MyCartPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Delete',
+                    child: Text(
+                      'Select All',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Delete',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -140,12 +152,10 @@ class _MyCartPageState extends State<MyCartPage> {
                     ),
                   ),
                 ],
-                  
               ),
               SizedBox(height: 16),
 
-              /*----------------Price summary-------------------- */
-
+              /* --------------Price Summary-------------- */
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -157,20 +167,19 @@ class _MyCartPageState extends State<MyCartPage> {
                       blurRadius: 5,
                     ),
                   ],
-               ),
-              
-
-              child: Column(
-                children: [
-                  SummaryRow(label: 'Price',value:'Rs.1500'),
-                  SummaryRow(label: 'Discount', value: 'Rs.0'),
-                  SummaryRow(label: 'Total Price', value: 'Rs.1500',isBold:true,), 
-                ],
+                ),
+                child: Column(
+                  children: [
+                    SummaryRow(label: 'Price', value: 'Rs.1500'),
+                    SummaryRow(label: 'Discount', value: 'Rs.0'),
+                    SummaryRow(label: 'Total Price', value: 'Rs.1500', isBold: true),
+                  ],
+                ),
               ),
-              ), 
 
-              /*-----------------Checkout button----------------- */
               SizedBox(height: 16),
+
+              /* --------------Checkout Button-------------- */
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
@@ -180,22 +189,20 @@ class _MyCartPageState extends State<MyCartPage> {
                   ),
                   minimumSize: Size(double.infinity, 50),
                 ),
-                child: Text('Checkout',
+                child: Text(
+                  'Checkout',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
               ),
-                SizedBox(height: 8),
             ],
           ),
         ),
-        
       ),
 
-      
-      /*------------------Bottom navigation bar------------------*/
+      /* --------------Bottom Navigation Bar-------------- */
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onNavBarItemTapped,
@@ -204,9 +211,7 @@ class _MyCartPageState extends State<MyCartPage> {
   }
 }
 
-
-/* ----------cart item Widget--------------- */
-
+/* ----------Cart Item Widget--------------- */
 class CartItem extends StatelessWidget {
   final String image;
   final String title;
@@ -296,12 +301,12 @@ class CartItem extends StatelessWidget {
                         height: 35,
                       ),
                     ),
-                    SizedBox(width: 15),
+                    SizedBox(width: 10),
                     Text(
                       '1',
                       style: TextStyle(fontSize: 20),
                     ),
-                    SizedBox(width: 15),
+                    SizedBox(width: 10),
                     GestureDetector(
                       onTap: () {},
                       child: Image.asset(
@@ -321,8 +326,7 @@ class CartItem extends StatelessWidget {
   }
 }
 
-/*-----------------Summary row widget----------------- */
-
+/* --------------Summary Row Widget--------------- */
 class SummaryRow extends StatelessWidget {
   final String label;
   final String value;
