@@ -142,6 +142,51 @@ class _MyCartPageState extends State<MyCartPage> {
                 ],
                   
               ),
+
+              /*----------------Price summary-------------------- */
+
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade200,
+                      blurRadius: 5,
+                    ),
+                  ],
+               ),
+              
+
+              child: Column(
+                children: [
+                  SummaryRow(label: 'Price',value:'Rs.1500'),
+                  SummaryRow(label: 'Discount', value: 'Rs.0'),
+                  SummaryRow(label: 'Total Price', value: 'Rs.1500',isBold:true,), 
+                ],
+              ),
+              ), 
+
+              /*-----------------Checkout button----------------- */
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(double.infinity, 50),
+                ),
+                child: Text('Checkout',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              
             ],
           ),
         ),
@@ -268,6 +313,43 @@ class CartItem extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/*-----------------Summary row widget----------------- */
+
+class SummaryRow extends StatelessWidget {
+  final String label;
+  final String value;
+  final bool isBold;
+
+  const SummaryRow({
+    required this.label,
+    required this.value,
+    this.isBold = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+      ],
     );
   }
 }
