@@ -4,8 +4,7 @@ import '../tent/tent_card.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
-import 'package:campkit/home/home_page.dart';
-import 'package:campkit/cart/cart_page.dart';
+import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
 class TentPage extends StatefulWidget {
   final String initialCategory;
@@ -20,32 +19,7 @@ class TentPage extends StatefulWidget {
 class _TentPageState extends State<TentPage> {
   int _selectedIndex = 1;
 
-  void _onNavBarItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-     switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-        break;
-      case 1:
-       // Stay on TentPage
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
-        );
-        break;
-      case 3:
-        // Navigate to the Profile page or other pages if implemented.
-        break;
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +113,7 @@ class _TentPageState extends State<TentPage> {
       ),
      bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-         onTap: _onNavBarItemTapped
+        onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
          
       ),
     );
