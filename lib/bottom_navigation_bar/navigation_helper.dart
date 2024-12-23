@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:campkit/home/home_page.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
-import 'package:campkit/cart/my_cart_page.dart';
+import 'package:campkit/cart/cart_page.dart';
 
 class NavigationHelper {
   static void onNavBarItemTapped(
@@ -15,7 +15,7 @@ class NavigationHelper {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(builder: (context) =>  HomePage()),
         );
         break;
       case 1:
