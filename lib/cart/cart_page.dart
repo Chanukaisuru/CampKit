@@ -142,6 +142,7 @@ class _MyCartPageState extends State<MyCartPage> {
                 ],
                   
               ),
+              SizedBox(height: 16),
 
               /*----------------Price summary-------------------- */
 
@@ -186,11 +187,14 @@ class _MyCartPageState extends State<MyCartPage> {
                   ),
                 ),
               ),
-              
+                SizedBox(height: 8),
             ],
           ),
         ),
+        
       ),
+
+      
       /*------------------Bottom navigation bar------------------*/
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
