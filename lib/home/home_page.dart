@@ -1,10 +1,9 @@
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_pages/back%20packs/backpacks_main.dart';
-import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
-import 'package:campkit/cart/cart_page.dart';
+import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
 
 
@@ -52,33 +51,7 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
 
-  void _onNavBarItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        // Stay on the HomePage.
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => TentPage(initialCategory: "Tent")),
-        );
-        break;
-
-      case 2:
-      // Navigate to the Cart page.
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
-      );
-      break;
-      // Add other cases for navigation.
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     
@@ -218,7 +191,7 @@ class _HomePageState extends State<HomePage> {
       /*-----------------bottom navigation bar------------------ */
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-         onTap: _onNavBarItemTapped
+        onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
          
       ),
 
