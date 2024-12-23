@@ -1,11 +1,11 @@
-import 'package:campkit/cart/cart_page.dart';
+
 import 'package:flutter/material.dart';
 import '../back packs/backpacks_card.dart';
 import '../back packs/backpacks_data.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
-import 'package:campkit/home/home_page.dart';
+import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
 
 class BackpacksMain extends StatefulWidget {
@@ -21,34 +21,7 @@ class BackpacksMain extends StatefulWidget {
 class _BackpackMainState extends State<BackpacksMain> {
   int _selectedIndex = 1;
 
-  void _onNavBarItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    // Navigation logic based on selected index
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-        break;
-      case 1:
-        // Stay on backpacks page
-        break;
-      case 2:
-         Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => MyCartPage(initialCategory: "Cart")),
-        );
-        break;
-      case 3:
-        // Navigate to ProfilePage (create it if necessary)
-        break;
-    }
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,10 +114,9 @@ class _BackpackMainState extends State<BackpacksMain> {
       ),
      bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-         onTap: _onNavBarItemTapped
-         
+        onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
+
       ),
     );
   }
-
 }
