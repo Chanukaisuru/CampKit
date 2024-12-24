@@ -14,25 +14,36 @@ class MyCartPage extends StatefulWidget {
 class _MyCartPageState extends State<MyCartPage> {
   int _selectedIndex = 2;
 
-  // List of cart items
+  // List of cart items with quantities
   List<Map<String, dynamic>> cartItems = [
     {
       'image': 'assets/image/4person.jpg',
       'title': '4 Person Tent',
       'subtitle': 'with rain cover\nRs.500/- per day',
       'price': 500,
+      'quantity': 1, // Initial quantity
     },
     {
       'image': 'assets/image/4person.jpg',
       'title': 'Gas Canister',
       'subtitle': 'Can cook 2 hours',
       'price': 1000,
+      'quantity': 1, // Initial quantity
     },
   ];
 
   void removeCartItem(int index) {
     setState(() {
       cartItems.removeAt(index);
+    });
+  }
+
+  void updateQuantity(int index, int delta) {
+    setState(() {
+      int newQuantity = cartItems[index]['quantity'] + delta;
+      if (newQuantity > 0) {
+        cartItems[index]['quantity'] = newQuantity;
+      }
     });
   }
 
@@ -95,7 +106,10 @@ class _MyCartPageState extends State<MyCartPage> {
                             title: cartItems[index]['title'],
                             subtitle: cartItems[index]['subtitle'],
                             price: cartItems[index]['price'],
+                            quantity: cartItems[index]['quantity'],
                             onRemove: () => removeCartItem(index),
+                            onIncrease: () => updateQuantity(index, 1),
+                            onDecrease: () => updateQuantity(index, -1),
                           ),
                           if (index != cartItems.length - 1)
                             SizedBox(height: 16),
@@ -170,14 +184,20 @@ class CartItem extends StatelessWidget {
   final String title;
   final String subtitle;
   final int price;
+  final int quantity;
   final VoidCallback onRemove;
+  final VoidCallback onIncrease;
+  final VoidCallback onDecrease;
 
   const CartItem({
     required this.image,
     required this.title,
     required this.subtitle,
     required this.price,
+    required this.quantity,
     required this.onRemove,
+    required this.onIncrease,
+    required this.onDecrease,
   });
 
   @override
@@ -246,58 +266,43 @@ class CartItem extends StatelessWidget {
                     // Add/Remove Icons and Quantity
                     Container(
                       height: 40,
+                      width: 120,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade400,
-                        width: 2
-                        ), 
-                      ),
-                      child: Row(
-                         mainAxisSize: MainAxisSize.min,
-                         children: [
-                            //decrement button
-                            GestureDetector(
-                              onTap: () {
-                                // Logic to decrease quantity
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Image.asset(
-                                  'assets/icon/remove.png', // Path to your remove icon
-                                  height: 20,
-                                  width: 20,
-                                ),
-                              ),
-                            ),
-
-
-                            // Quantity
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                '1', // Replace with dynamic quantity value
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-
-                            // Increase Button
-                              GestureDetector(
-                               onTap: () {
-                                 // Logic to increase quantity
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Image.asset(
-                                      'assets/icon/add.png', // Path to your add icon
-                                      height: 20,
-                                      width: 20,
-                                 ),
-                                ),
-                              ),
-                         ],
-                      ),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.grey.shade400, width: 2),
+                      
+                        ),
+                      
+                      child:Row(
+                       children: [
+                        SizedBox(width: 16),
+                        GestureDetector(
+                          onTap: onDecrease,
+                          child: Image.asset(
+                                   'assets/icon/remove.png', // Path to your add icon
+                                    height: 22,
+                                    width: 22,
+                                  ),
+                        ),
+                        
+                        SizedBox(width: 16),
+                        Text(
+                          '$quantity',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        
+                        SizedBox(width: 16),
+                        GestureDetector(
+                          onTap: onIncrease,
+                          child: Image.asset(
+                                    'assets/icon/add.png', // Path to your add icon
+                                     height: 20,
+                                    width: 20,
+                                    ),
+                        ),
+                      ],
                     ),
+                    )
                   ],
                 ),
               ),
@@ -322,6 +327,7 @@ class CartItem extends StatelessWidget {
     );
   }
 }
+
 
 
 /* --------------Summary Row Widget--------------- */
