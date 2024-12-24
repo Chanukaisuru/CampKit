@@ -284,9 +284,9 @@ class CartItem extends StatelessWidget {
           child: GestureDetector(
             onTap: onRemove,
             child: Image.asset(
-                            'assets/icon/add.png',
-                            width: 32,
-                            height: 32,
+                            'assets/icon/delete.png',
+                            width: 16,
+                            height: 16,
                           ),
           ),
         ),
