@@ -244,31 +244,59 @@ class CartItem extends StatelessWidget {
                     SizedBox(height: 12),
 
                     // Add/Remove Icons and Quantity
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Image.asset(
-                            'assets/icon/remove.png',
-                            width: 35,
-                            height: 35,
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          '1',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        SizedBox(width: 10),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Image.asset(
-                            'assets/icon/add.png',
-                            width: 32,
-                            height: 32,
-                          ),
-                        ),
-                      ],
+                    Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade400,
+                        width: 2
+                        ), 
+                      ),
+                      child: Row(
+                         mainAxisSize: MainAxisSize.min,
+                         children: [
+                            //decrement button
+                            GestureDetector(
+                              onTap: () {
+                                // Logic to decrease quantity
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Image.asset(
+                                  'assets/icon/remove.png', // Path to your remove icon
+                                  height: 20,
+                                  width: 20,
+                                ),
+                              ),
+                            ),
+
+
+                            // Quantity
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                '1', // Replace with dynamic quantity value
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+
+                            // Increase Button
+                              GestureDetector(
+                               onTap: () {
+                                 // Logic to increase quantity
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                  child: Image.asset(
+                                      'assets/icon/add.png', // Path to your add icon
+                                      height: 20,
+                                      width: 20,
+                                 ),
+                                ),
+                              ),
+                         ],
+                      ),
                     ),
                   ],
                 ),
