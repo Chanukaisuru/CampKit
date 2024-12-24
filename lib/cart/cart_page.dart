@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
-import 'package:campkit/category_pages/tent/tent.dart';
-import 'package:campkit/home/home_page.dart';
 import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
 class MyCartPage extends StatefulWidget {
@@ -86,46 +84,7 @@ class _MyCartPageState extends State<MyCartPage> {
                 ),
               ),
 
-              SizedBox(height: 16),
 
-              /* --------------Action Buttons-------------- */
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      'Select All',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      'Delete',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               SizedBox(height: 16),
 
               /* --------------Price Summary-------------- */
