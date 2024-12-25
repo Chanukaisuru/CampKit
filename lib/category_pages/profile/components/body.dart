@@ -8,7 +8,41 @@ class Body extends StatelessWidget {
       children: [
         ProfilePic(),
         SizedBox(height: 20),
-        ProfileMenu(icon:'assets/icon/user.png', text: 'My Account', press: () {}),
+        ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
+
+          ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
+
+          ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
+
+          ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
+
+          ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
+
+          ProfileMenu(
+          icon:'assets/icon/user.png',
+          text: 'My Account', 
+          press: () {}
+          ),
       ],
     );
   }
