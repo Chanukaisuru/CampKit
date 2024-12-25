@@ -27,12 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       /* --------------Bottom Navigation Bar-------------- */
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex);
-        },
+        onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
+
+        
        ),
     );
   }
