@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:campkit/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
+import 'components/body.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String initialCategory;
@@ -19,6 +20,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
+
+      /* --------------Body-------------- */
+      body: Body(),
 
       /* --------------Bottom Navigation Bar-------------- */
       bottomNavigationBar: CustomBottomNavBar(
