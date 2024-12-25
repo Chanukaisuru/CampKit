@@ -109,6 +109,7 @@ flutter:
      - assets/icon/remove.png
      - assets/icon/add.png
      - assets/icon/delete.png
+     - assets/icon/camera.png
 
      
   #   - images/a_dot_burr.jpeg
