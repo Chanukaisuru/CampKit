@@ -110,7 +110,7 @@ flutter:
      - assets/icon/add.png
      - assets/icon/delete.png
      - assets/icon/camera.png
-
+     - assets/icon/next.png
      
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
