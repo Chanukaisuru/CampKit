@@ -15,32 +15,26 @@ class Body extends StatelessWidget {
           ),
 
           ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
+          icon:'assets/icon/notification-bell.png',
+          text: 'Notifications', 
           press: () {}
           ),
 
           ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
+          icon:'assets/icon/settings.png',
+          text: 'Settings', 
           press: () {}
           ),
 
           ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
+          icon:'assets/icon/customer-support.png',
+          text: 'Help Center', 
           press: () {}
           ),
 
           ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
-          press: () {}
-          ),
-
-          ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
+          icon:'assets/icon/power.png',
+          text: 'Log Out', 
           press: () {}
           ),
       ],
