@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
             fit: StackFit.expand,
             children: [
               CircleAvatar(
-                backgroundImage: AssetImage("assets/image/profile.jpg"),
+                backgroundImage: AssetImage("assets/image/userimage.jpeg"),
               ),
             ],  
             ),
