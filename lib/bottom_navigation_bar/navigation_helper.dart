@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:campkit/home/home_page.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
 import 'package:campkit/cart/cart_page.dart';
+import 'package:campkit/category_pages/profile/profile_screen.dart';
 
 class NavigationHelper {
   static void onNavBarItemTapped(
@@ -31,7 +32,10 @@ class NavigationHelper {
         );
         break;
       case 3:
-        // Implement the Profile page navigation logic
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) =>  ProfileScreen(initialCategory: "Profile")),
+        );
         break;
     }
   }
