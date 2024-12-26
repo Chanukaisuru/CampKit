@@ -1,6 +1,7 @@
-import 'package:campkit/home/home_page.dart';
 import 'package:campkit/signIn_and_signUp/sign_in_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -8,7 +9,16 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscurePassword = true; // State variable to manage password visibility
+  bool _obscurePassword = true;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+
+  // Firebase Authentication instance
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Error message variable
+  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(height: 30),
 
                   // Header Image
-                  Image.asset('assets/image/signInPage_image.jpeg',
-                      height: 150),
+                  Image.asset('assets/image/signInPage_image.jpeg', height: 150),
                   SizedBox(height: 20),
 
                   // Title
@@ -39,6 +48,27 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: 20),
 
+                  // Display Error Message (without error icon)
+                  if (_errorMessage != null)
+                    Container(
+                      margin: EdgeInsets.only(bottom: 16),
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _errorMessage!,
+                              style: TextStyle(color: Colors.red, fontSize: 14),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
                   // Name Field
                   Align(
                     alignment: Alignment.centerLeft,
@@ -47,7 +77,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField('Chanuka Isuru', false),
+                  _buildTextField('Full Name', _nameController, false),
                   SizedBox(height: 16),
 
                   // Email Field
@@ -58,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField('chanukaisuru@gmail.com', false),
+                  _buildTextField('Email Address', _emailController, false),
                   SizedBox(height: 16),
 
                   // Password Field
@@ -74,14 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                   // Sign Up Button
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CampKitApp(),
-                        ),
-                      );
-                    },
+                    onPressed: _signUp,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF277A8C),
                       padding: EdgeInsets.symmetric(vertical: 14),
@@ -111,7 +134,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       _buildSocialIcon('assets/icon/google.png', 48.0),
                       SizedBox(width: 25),
                       _buildSocialIcon('assets/icon/facebook.png', 35.0),
-                      SizedBox(width: 25),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -150,9 +172,78 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  /// Firebase Sign Up Method
+  Future<void> _signUp() async {
+    if (!_validateInput()) {
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      // Optionally update display name
+      await userCredential.user?.updateDisplayName(_nameController.text.trim());
+
+      // Navigate to Sign In Page
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Account created successfully. Please sign in.')),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SignInPage()),
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        // Update the error message with the exception message
+        _errorMessage = e.message;
+      });
+
+      // Remove error message after 4 seconds
+      Future.delayed(Duration(seconds: 4), () {
+        if (mounted) {
+          setState(() {
+            _errorMessage = null;
+          });
+        }
+      });
+    }
+  }
+
+  // Input Validation
+  bool _validateInput() {
+    if (_nameController.text.isEmpty) {
+      setState(() {
+        _errorMessage = "Please enter your name.";
+      });
+      return false;
+    } else if (!_isValidEmail(_emailController.text)) {
+      setState(() {
+        _errorMessage = "Please enter a valid email address.";
+      });
+      return false;
+    } else if (_passwordController.text.length < 6) {
+      setState(() {
+        _errorMessage = "Password must be at least 6 characters.";
+      });
+      return false;
+    }
+    return true;
+  }
+
+  // Email validation helper function
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
   /// Password Field with Eye Icon Toggle
   Widget _buildPasswordField() {
     return TextField(
+      controller: _passwordController,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         hintText: '********',
@@ -183,11 +274,8 @@ class _SignUpPageState extends State<SignUpPage> {
               _obscurePassword = !_obscurePassword;
             });
           },
-          child: Image.asset(
-            _obscurePassword
-                ? 'assets/icon/close_eye.png' // Custom icon for hidden password
-                : 'assets/icon/open_eye.png', // Custom icon for visible password
-            height: 20,
+          child: Icon(
+            _obscurePassword ? Icons.visibility_off : Icons.visibility,
             color: Color.fromARGB(255, 124, 123, 123),
           ),
         ),
@@ -195,7 +283,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  /// Social Media Icon Widget with Custom Size
+  /// Social Media Icon Widget
   Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
       onTap: () {
@@ -213,8 +301,10 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   /// Text Field Widget
-  Widget _buildTextField(String hint, bool obscureText) {
+  Widget _buildTextField(
+      String hint, TextEditingController controller, bool obscureText) {
     return TextField(
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hint,

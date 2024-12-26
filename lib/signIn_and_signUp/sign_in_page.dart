@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:campkit/home/home_page.dart';
 import 'package:campkit/signIn_and_signUp/sign_up_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -8,7 +9,15 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  bool _obscurePassword = true; // Manage password visibility state
+  bool _obscurePassword = true;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  // Firebase Authentication instance
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Error message variable
+  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +50,21 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   SizedBox(height: 20),
 
+                  // Error Message
+                  if (_errorMessage != null && _errorMessage!.isNotEmpty)
+                    Container(
+                      margin: EdgeInsets.only(bottom: 16),
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        _errorMessage!,
+                        style: TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+                    ),
+
                   // Email Field
                   Align(
                     alignment: Alignment.centerLeft,
@@ -49,7 +73,7 @@ class _SignInPageState extends State<SignInPage> {
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  _buildTextField('chanukaisuru@gmail.com', false),
+                  _buildTextField('Email Address', _emailController, false),
                   SizedBox(height: 16),
 
                   // Password Field
@@ -65,14 +89,7 @@ class _SignInPageState extends State<SignInPage> {
 
                   // Sign-in Button
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CampKitApp(),
-                        ),
-                      );
-                    },
+                    onPressed: _signIn,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF277A8C),
                       padding: EdgeInsets.symmetric(vertical: 14),
@@ -99,11 +116,9 @@ class _SignInPageState extends State<SignInPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSocialIcon(
-                          'assets/icon/google.png', 48.0), // Google Icon
+                      _buildSocialIcon('assets/icon/google.png', 48.0),
                       SizedBox(width: 25),
-                      _buildSocialIcon(
-                          'assets/icon/facebook.png', 35.0), // Facebook Icon
+                      _buildSocialIcon('assets/icon/facebook.png', 35.0),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -142,9 +157,38 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  /// Password field with eye toggle
+  /// Firebase Sign In Method
+  Future<void> _signIn() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      // On successful sign in, navigate to the Home Page
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        // Update the error message with the exception message
+        _errorMessage = e.message;
+      });
+
+      // Remove error message after 4 seconds
+      Future.delayed(Duration(seconds: 4), () {
+        setState(() {
+          _errorMessage = null;
+        });
+      });
+    }
+  }
+
+  /// Password Field with Eye Icon Toggle
   Widget _buildPasswordField() {
     return TextField(
+      controller: _passwordController,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         hintText: '********',
@@ -175,27 +219,24 @@ class _SignInPageState extends State<SignInPage> {
               _obscurePassword = !_obscurePassword;
             });
           },
-          child: Image.asset(
-            _obscurePassword
-                ? 'assets/icon/close_eye.png' // Hidden password icon
-                : 'assets/icon/open_eye.png', // Visible password icon
-            height: 20,
-            color: Color(0xFF7C7B7B),
+          child: Icon(
+            _obscurePassword ? Icons.visibility_off : Icons.visibility,
+            color: Color.fromARGB(255, 124, 123, 123),
           ),
         ),
       ),
     );
   }
 
-  /// Social Media Icon Widget with Custom Size
+  /// Social Media Icon Widget
   Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
       onTap: () {
         // Handle social login
       },
       child: SizedBox(
-        width: size, // Set width based on parameter
-        height: size, // Set height based on parameter
+        width: size,
+        height: size,
         child: Image.asset(
           assetPath,
           fit: BoxFit.contain,
@@ -205,8 +246,10 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   /// Text Field Widget
-  Widget _buildTextField(String hint, bool obscureText) {
+  Widget _buildTextField(
+      String hint, TextEditingController controller, bool obscureText) {
     return TextField(
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hint,
@@ -220,7 +263,7 @@ class _SignInPageState extends State<SignInPage> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: Color(0x99277A8C),
+            color: Color(0xFF277A8C),
             width: 1.0,
           ),
         ),
