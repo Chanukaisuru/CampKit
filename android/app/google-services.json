@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950416819855",
+    "project_id": "authfirebase-f506c",
+    "storage_bucket": "authfirebase-f506c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950416819855:android:a2e792ff5745754f7e92fa",
+        "android_client_info": {
+          "package_name": "com.example.campkit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3mm2tpws3541qR1T61RjmUD5yBZNY1SY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
