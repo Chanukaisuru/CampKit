@@ -17,12 +17,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child:Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*--------------Back icon and Title--------------*/
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icon/left-arrow.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Text(
+                    'Profile',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      
+                      
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              /* --------------Body-------------- */
+              Expanded(
+                child: Body(),
+              ),
+            ],
+          ),
+       
+        ),
       ),
+             
 
-      /* --------------Body-------------- */
-      body: Body(),
+    
+
+      
 
       /* --------------Bottom Navigation Bar-------------- */
       bottomNavigationBar: CustomBottomNavBar(
