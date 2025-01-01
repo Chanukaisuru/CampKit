@@ -240,7 +240,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return emailRegex.hasMatch(email);
   }
 
-  /// Password Field with Eye Icon Toggle
+  /// Password Field with Eye Icon Toggle (Custom Images)
   Widget _buildPasswordField() {
     return TextField(
       controller: _passwordController,
@@ -274,9 +274,12 @@ class _SignUpPageState extends State<SignUpPage> {
               _obscurePassword = !_obscurePassword;
             });
           },
-          child: Icon(
-            _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Color.fromARGB(255, 124, 123, 123),
+          child: Image.asset(
+            _obscurePassword
+                ? 'assets/icon/close_eye.png'  // Custom eye off icon
+                : 'assets/icon/open_eye.png',  // Custom eye on icon
+            width: 24,
+            height: 24,
           ),
         ),
       ),
