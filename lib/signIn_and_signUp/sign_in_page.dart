@@ -185,7 +185,7 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
-  /// Password Field with Eye Icon Toggle
+  /// Password Field with Eye Icon Toggle (Using Custom Icons)
   Widget _buildPasswordField() {
     return TextField(
       controller: _passwordController,
@@ -213,15 +213,21 @@ class _SignInPageState extends State<SignInPage> {
             width: 2.0,
           ),
         ),
-        suffixIcon: GestureDetector(
-          onTap: () {
-            setState(() {
-              _obscurePassword = !_obscurePassword;
-            });
-          },
-          child: Icon(
-            _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Color.fromARGB(255, 124, 123, 123),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: IconButton(
+            icon: Image.asset(
+              _obscurePassword
+                  ? 'assets/icon/close_eye.png' // Use your custom "eye off" icon
+                  : 'assets/icon/open_eye.png',  // Use your custom "eye on" icon
+              width: 24, // Icon width
+              height: 24, // Icon height
+            ),
+            onPressed: () {
+              setState(() {
+                _obscurePassword = !_obscurePassword;
+              });
+            },
           ),
         ),
       ),
