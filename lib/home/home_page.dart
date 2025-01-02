@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
-
 import 'package:campkit/category_pages/populer/populer_data.dart';
 import 'package:campkit/category_pages/populer/populer_card.dart';
+
 
 
 void main() {
@@ -185,24 +185,15 @@ class _HomePageState extends State<HomePage> {
               const CategoryRow(selectedCategory: "Popular"),
               const SizedBox(height: 20),
                 // Popular section
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Popular Items",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  
-                ),
+                
                 Expanded(
                 child: GridView.builder(
+                  scrollDirection: Axis.horizontal, // Enable horizontal scrolling
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 1, // Single row for horizontal scrolling
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.59, // change card height
+                    childAspectRatio: 1.8, // Adjust card width/height ratio
                   ),
                   itemCount: populers.length,
                   itemBuilder: (context, index) {
