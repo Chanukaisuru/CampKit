@@ -5,6 +5,7 @@ import 'package:campkit/category_pages/other/other_page.dart';
 import 'package:flutter/material.dart';
 import 'category_button.dart';
 import 'package:campkit/category_pages/tent/tent.dart';
+import 'package:campkit/category_pages/populer/populer.dart';
 
 class CategoryRow extends StatefulWidget {
   final String selectedCategory;
@@ -25,6 +26,15 @@ void initState() {
 
   void _navigateToPage(String category) {
     switch (category) {
+      case "Populer":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PopulerPage(initialCategory: category),
+            ),
+        );
+        break;
+
       case "Tent":
         Navigator.push(
           context,

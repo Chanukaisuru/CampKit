@@ -5,6 +5,8 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
+import 'package:campkit/category_pages/populer/populer_data.dart';
+import 'package:campkit/category_pages/populer/populer_card.dart';
 
 
 void main() {
@@ -181,7 +183,45 @@ class _HomePageState extends State<HomePage> {
 
               SizedBox(height: 20),
               const CategoryRow(selectedCategory: "Popular"),
-
+              const SizedBox(height: 20),
+                // Popular section
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Popular Items",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  
+                ),
+                Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 12.0,
+                    childAspectRatio: 0.59, // change card height
+                  ),
+                  itemCount: populers.length,
+                  itemBuilder: (context, index) {
+                    final populer = populers[index];
+                    return PopulerCard(
+                      imageUrl: populer.imageUrl,
+                      name: populer.name,
+                      capacity: populer.capacity,
+                      pricePerDay: populer.price,
+                      description: populer.description,
+                      onAddToCart: () {
+                        // ignore: avoid_print
+                        print('Added ${populer.capacity} to cart');
+                      },
+                    );
+                  },
+                ),
+              ),
+                
             ],
           ),
         ),
