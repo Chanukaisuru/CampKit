@@ -14,21 +14,21 @@ class MyCartPage extends StatefulWidget {
 class _MyCartPageState extends State<MyCartPage> {
   int _selectedIndex = 2;
 
-  // List of cart items with quantities
+  // Cart item list
   List<Map<String, dynamic>> cartItems = [
     {
       'image': 'assets/image/4person.jpg',
       'title': '4 Person Tent',
       'subtitle': 'with rain cover\nRs.500/- per day',
       'price': 500,
-      'quantity': 1, // Initial quantity
+      'quantity': 1,
     },
     {
       'image': 'assets/image/4person.jpg',
       'title': 'Gas Canister',
       'subtitle': 'Can cook 2 hours',
       'price': 1000,
-      'quantity': 1, // Initial quantity
+      'quantity': 1,
     },
   ];
 
@@ -57,7 +57,7 @@ class _MyCartPageState extends State<MyCartPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------Back icon and Title--------------*/
+              // Back icon and Title
               Row(
                 children: [
                   GestureDetector(
@@ -82,7 +82,7 @@ class _MyCartPageState extends State<MyCartPage> {
               ),
               SizedBox(height: 16),
 
-              /* --------------Cart Items Box-------------- */
+              // Cart Items Box
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(16),
@@ -122,7 +122,7 @@ class _MyCartPageState extends State<MyCartPage> {
 
               SizedBox(height: 16),
 
-              /* --------------Price Summary-------------- */
+              // Price Summary
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -146,7 +146,7 @@ class _MyCartPageState extends State<MyCartPage> {
 
               SizedBox(height: 16),
 
-              /* --------------Checkout Button-------------- */
+              // Checkout Button
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
@@ -169,7 +169,7 @@ class _MyCartPageState extends State<MyCartPage> {
         ),
       ),
 
-      /* --------------Bottom Navigation Bar-------------- */
+      // Bottom Navigation Bar
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
@@ -178,7 +178,7 @@ class _MyCartPageState extends State<MyCartPage> {
   }
 }
 
-/* ----------Cart Item Widget--------------- */
+// Cart Item Widget
 class CartItem extends StatelessWidget {
   final String image;
   final String title;
@@ -228,7 +228,7 @@ class CartItem extends StatelessWidget {
               ),
               SizedBox(width: 20),
 
-              // Item description (title, subtitle, and actions)
+              // Item description
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -279,7 +279,7 @@ class CartItem extends StatelessWidget {
                         GestureDetector(
                           onTap: onDecrease,
                           child: Image.asset(
-                                   'assets/icon/remove.png', // Path to your add icon
+                                   'assets/icon/remove.png',
                                     height: 22,
                                     width: 22,
                                   ),
@@ -295,7 +295,7 @@ class CartItem extends StatelessWidget {
                         GestureDetector(
                           onTap: onIncrease,
                           child: Image.asset(
-                                    'assets/icon/add.png', // Path to your add icon
+                                    'assets/icon/add.png',
                                      height: 20,
                                     width: 20,
                                     ),
@@ -310,7 +310,7 @@ class CartItem extends StatelessWidget {
           ),
         ),
 
-        // Close button (cross mark)
+        // Close button
         Positioned(
           top: 8,
           right: 8,
@@ -330,7 +330,7 @@ class CartItem extends StatelessWidget {
 
 
 
-/* --------------Summary Row Widget--------------- */
+// Summary Row Widget
 class SummaryRow extends StatelessWidget {
   final String label;
   final String value;

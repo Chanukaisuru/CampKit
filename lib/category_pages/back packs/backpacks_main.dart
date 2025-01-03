@@ -7,21 +7,18 @@ import 'package:campkit/category_Box/category_row.dart';
 import 'package:campkit/home/search_bar.dart' as custom;
 import 'package:campkit/bottom_navigation_bar/navigation_helper.dart';
 
-
 class BackpacksMain extends StatefulWidget {
   final String initialCategory;
 
   const BackpacksMain({super.key, required this.initialCategory});
 
   @override
-  
   _BackpackMainState createState() => _BackpackMainState();
 }
 
 class _BackpackMainState extends State<BackpacksMain> {
   int _selectedIndex = 1;
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +30,7 @@ class _BackpackMainState extends State<BackpacksMain> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              /*--------------back icon-------------- */
+              // Back icon
               Row(  
                 children: [
                   GestureDetector(
@@ -47,9 +44,7 @@ class _BackpackMainState extends State<BackpacksMain> {
                     ),
                   ),
 
-              /*------------End of the back icon--------------- */
-                  
-                  
+                  // Title
                   const SizedBox(width: 10,),
                   const Text(
                     'Available Backpacks',
@@ -60,24 +55,16 @@ class _BackpackMainState extends State<BackpacksMain> {
                   ),
                 ],
               ),
-              
-              
-              /*---------------category bar--------------------- */
+
+              // Category bar
               const SizedBox(height: 10),
               SizedBox(height: 20),
                CategoryRow(selectedCategory: widget.initialCategory),
 
-              /*end category bar */
-
-
-              
-              /*-----------------Search bar-------------------*/
-
-              
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
-                  // Handle search input
                   print("Search input: $value");
                 },
               ),
@@ -89,7 +76,7 @@ class _BackpackMainState extends State<BackpacksMain> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.50, // change card hight
+                    childAspectRatio: 0.50,
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
@@ -115,7 +102,6 @@ class _BackpackMainState extends State<BackpacksMain> {
      bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
-
       ),
     );
   }
