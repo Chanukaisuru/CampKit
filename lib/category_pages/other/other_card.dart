@@ -27,7 +27,7 @@ class OtherCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /*------------card image-------------------- */
+            // Card image
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -38,7 +38,7 @@ class OtherCard extends StatelessWidget {
               ),
             ),
 
-            /*-----------------name---------------------- */
+            // Name
             const SizedBox(height: 8),
             Text(
               name,
@@ -48,7 +48,7 @@ class OtherCard extends StatelessWidget {
               ),
             ),
 
-            /*------------------description------------------ */
+            // Description
             const SizedBox(height: 5),
             Text(
               description,
@@ -58,7 +58,7 @@ class OtherCard extends StatelessWidget {
               ),
             ),
 
-            /*---------------------price--------------------*/
+            // Price
             const SizedBox(height: 5),
             Text(
               'Rs. $pricePerDay/- per day',
@@ -68,7 +68,7 @@ class OtherCard extends StatelessWidget {
               ),
             ),
 
-            /*------------------------cart button----------------------- */
+            // Cart button
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,

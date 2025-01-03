@@ -29,7 +29,6 @@ class _BackpackMainState extends State<BackpacksMain> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // Back icon
               Row(  
                 children: [

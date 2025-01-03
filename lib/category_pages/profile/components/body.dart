@@ -60,7 +60,7 @@ class ProfileMenu extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           padding: EdgeInsets.all(20),
-          backgroundColor: Color(0xFFF5F6F9), // Background color
+          backgroundColor: Color(0xFFF5F6F9),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -77,7 +77,7 @@ class ProfileMenu extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
-                style: TextStyle(color: Colors.black), // Text color
+                style: TextStyle(color: Colors.black),
               ),
             ),
     

@@ -25,8 +25,7 @@ class ProfilePic extends StatelessWidget {
               width: 46,
               child: TextButton(
                 onPressed:() {
-                  //logic hear
-                }, 
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.grey.shade200,
                   shape: RoundedRectangleBorder(

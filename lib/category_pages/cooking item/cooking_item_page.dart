@@ -30,7 +30,7 @@ class _CookingItemPageState extends State<CookingItemPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------back icon-------------- */
+              // Back icon
               Row(
                 children: [
                   GestureDetector(
@@ -55,12 +55,11 @@ class _CookingItemPageState extends State<CookingItemPage> {
                 ],
               ),
 
-              /*---------------category bar--------------------- */
+              // Category bar
               SizedBox(height: 20),
               CategoryRow(selectedCategory: widget.initialCategory),
-              /* End category bar */
 
-              /*-----------------Search bar-------------------*/
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
@@ -70,7 +69,7 @@ class _CookingItemPageState extends State<CookingItemPage> {
                 },
               ),
 
-              /*---------------------cooking item card-------------------------- */
+              // Cooking item card
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
@@ -78,9 +77,9 @@ class _CookingItemPageState extends State<CookingItemPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.53, // change card height
+                    childAspectRatio: 0.53,
                   ),
-                  itemCount: cookingItems.length, // List of cooking items
+                  itemCount: cookingItems.length,
                   itemBuilder: (context, index) {
                     final item = cookingItems[index];
                     return CookingItemCard(
