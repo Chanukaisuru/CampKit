@@ -1,4 +1,5 @@
 import 'package:campkit/signIn_and_signUp/sign_in_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _nameController = TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   String? _errorMessage;
 
@@ -181,7 +183,18 @@ class _SignUpPageState extends State<SignUpPage> {
         password: _passwordController.text.trim(),
       );
 
+      // Update display name in Firebase Auth
       await userCredential.user?.updateDisplayName(_nameController.text.trim());
+
+      // Save user data in Firestore
+      final userId = userCredential.user?.uid;
+      if (userId != null) {
+        await _firestore.collection('users').doc(userId).set({
+          'name': _nameController.text.trim(),
+          'email': _emailController.text.trim(),
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Account created successfully. Please sign in.')),
