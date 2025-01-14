@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   int _currentAdIndex = 0;
 
   final List<String> _ads = [
-    'assets/image/ad1.jpeg', // Replace with your ad image paths
+    'assets/image/ad1.jpeg',
     'assets/image/ad2.jpeg',
     'assets/image/ad3.jpeg',
   ];
@@ -64,10 +64,8 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              // First Row: Greeting and Profile Image
               Row(
                 children: [
-                  // Column for greeting text
                   const Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,11 +89,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
-
-                  /*------------------Profile image--------------------*/
-                  
+                  // Profile image
                   Container(
-                    padding: const EdgeInsets.all(2), // Space between the border and CircleAvatar
+                    padding: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
@@ -103,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                         width: 3,           
                       ),
                     ),
-
 
                     child: CircleAvatar(
                       radius: 20,
@@ -113,11 +108,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),  
 
-
-
-              /*-----------------Search bar-------------------*/
-
-              
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
@@ -126,10 +117,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
 
-
-
-              /*-----------------add bar------------ */
-
+              // Add Bar
               SizedBox(height: 20),
               SizedBox(
                 height: 200,  
@@ -154,11 +142,8 @@ class _HomePageState extends State<HomePage> {
                         },
                 ),
               ),
-              
 
-
-              /*------Dots Indicator-------------------- */
-
+              // Dots Indicator
               SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -176,11 +161,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              
 
-
-              /*---------------category bar--------------------- */
-
+              // Category bar
               SizedBox(height: 20),
               const CategoryRow(selectedCategory: "Popular"),
               const SizedBox(height: 20),
@@ -188,12 +170,12 @@ class _HomePageState extends State<HomePage> {
                 
                 Expanded(
                 child: GridView.builder(
-                  scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+                  scrollDirection: Axis.horizontal,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1, // Single row for horizontal scrolling
+                    crossAxisCount: 1,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 1.8, // Adjust card width/height ratio
+                    childAspectRatio: 1.8,
                   ),
                   itemCount: populers.length,
                   itemBuilder: (context, index) {
@@ -218,12 +200,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-
-      /*-----------------bottom navigation bar------------------ */
+      // Bottom Navigation Bar
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
-         
       ),
 
     );

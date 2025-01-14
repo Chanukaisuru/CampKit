@@ -27,7 +27,7 @@ class CookingItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /*------------card image-------------------- */
+            // Card image
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -37,7 +37,8 @@ class CookingItemCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            /*-----------------name---------------------- */
+
+            // Name
             const SizedBox(height: 8),
             Text(
               name,
@@ -46,7 +47,8 @@ class CookingItemCard extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-            /*-------------------description--------------------- */
+
+            // Description
             const SizedBox(height: 5),
             if (description != null)
               Text(
@@ -56,7 +58,8 @@ class CookingItemCard extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-            /*---------------------price--------------------*/
+
+            // Price
             const SizedBox(height: 5),
             Text(
               'Rs. $pricePerDay/- per day',
@@ -65,7 +68,8 @@ class CookingItemCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            /*------------------------cart button----------------------- */
+
+            // Cart Button
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,

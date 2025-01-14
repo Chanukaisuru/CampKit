@@ -19,8 +19,6 @@ class LightPage extends StatefulWidget {
 class _LightPageState extends State<LightPage> {
   final int _selectedIndex = 1;
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class _LightPageState extends State<LightPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------back icon and title-------------- */
+              // Back icon and title
               Row(
                 children: [
                   GestureDetector(
@@ -55,12 +53,12 @@ class _LightPageState extends State<LightPage> {
                 ],
               ),
 
-              /*---------------category bar--------------------- */
+              // Category bar
               const SizedBox(height: 20),
               CategoryRow(selectedCategory: widget.initialCategory),
               /* End category bar */
 
-              /*-----------------Search bar-------------------*/
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
@@ -70,7 +68,7 @@ class _LightPageState extends State<LightPage> {
                 },
               ),
 
-              /*---------------------Light card grid-------------------------- */
+              // Light card grid
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
@@ -78,9 +76,9 @@ class _LightPageState extends State<LightPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.51, // Adjusts card height
+                    childAspectRatio: 0.51,
                   ),
-                  itemCount: lights.length, // List of lights
+                  itemCount: lights.length,
                   itemBuilder: (context, index) {
                     final light = lights[index];
                     return LightCard(

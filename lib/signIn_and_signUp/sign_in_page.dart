@@ -13,10 +13,8 @@ class _SignInPageState extends State<SignInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Firebase Authentication instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Error message variable
   String? _errorMessage;
 
   @override
@@ -218,8 +216,8 @@ class _SignInPageState extends State<SignInPage> {
           child: IconButton(
             icon: Image.asset(
               _obscurePassword
-                  ? 'assets/icon/close_eye.png' // Use your custom "eye off" icon
-                  : 'assets/icon/open_eye.png',  // Use your custom "eye on" icon
+                  ? 'assets/icon/close_eye.png'
+                  : 'assets/icon/open_eye.png',
               width: 24, // Icon width
               height: 24, // Icon height
             ),
@@ -238,7 +236,6 @@ class _SignInPageState extends State<SignInPage> {
   Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
       onTap: () {
-        // Handle social login
       },
       child: SizedBox(
         width: size,

@@ -31,7 +31,7 @@ class _OtherPageState extends State<OtherPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------back icon-------------- */
+              // Back icon
               Row(
                 children: [
                   GestureDetector(
@@ -56,12 +56,12 @@ class _OtherPageState extends State<OtherPage> {
                 ],
               ),
 
-              /*---------------category bar--------------------- */
+              // Category bar
               SizedBox(height: 20),
               CategoryRow(selectedCategory: widget.initialCategory),
               /* End category bar */
 
-              /*-----------------Search bar-------------------*/
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
@@ -71,7 +71,7 @@ class _OtherPageState extends State<OtherPage> {
                 },
               ),
 
-              /*---------------------other card-------------------------- */
+              // Other card
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
@@ -79,9 +79,9 @@ class _OtherPageState extends State<OtherPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.5, // change card height
+                    childAspectRatio: 0.5,
                   ),
-                  itemCount: others.length, // List of other category items
+                  itemCount: others.length,
                   itemBuilder: (context, index) {
                     final item = others[index];
                     return OtherCard(

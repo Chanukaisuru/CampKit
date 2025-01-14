@@ -13,10 +13,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
 
-  // Firebase Authentication instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Error message variable
   String? _errorMessage;
 
   @override
@@ -47,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: 20),
 
-                  // Display Error Message (without error icon)
+                  // Display Error Message
                   if (_errorMessage != null)
                     Container(
                       margin: EdgeInsets.only(bottom: 16),
@@ -183,10 +181,8 @@ class _SignUpPageState extends State<SignUpPage> {
         password: _passwordController.text.trim(),
       );
 
-      // Optionally update display name
       await userCredential.user?.updateDisplayName(_nameController.text.trim());
 
-      // Navigate to Sign In Page
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Account created successfully. Please sign in.')),
       );
@@ -197,11 +193,9 @@ class _SignUpPageState extends State<SignUpPage> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
-        // Update the error message with the exception message
         _errorMessage = e.message;
       });
 
-      // Remove error message after 4 seconds
       Future.delayed(Duration(seconds: 4), () {
         if (mounted) {
           setState(() {
@@ -233,13 +227,12 @@ class _SignUpPageState extends State<SignUpPage> {
     return true;
   }
 
-  // Email validation helper function
   bool _isValidEmail(String email) {
     final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegex.hasMatch(email);
   }
 
-  /// Password Field with Eye Icon Toggle (Custom Images)
+  /// Password Field with Eye Icon Toggle
   Widget _buildPasswordField() {
     return TextField(
       controller: _passwordController,
@@ -275,8 +268,8 @@ class _SignUpPageState extends State<SignUpPage> {
           },
           child: Image.asset(
             _obscurePassword
-                ? 'assets/icon/close_eye.png'  // Custom eye off icon
-                : 'assets/icon/open_eye.png',  // Custom eye on icon
+                ? 'assets/icon/close_eye.png'
+                : 'assets/icon/open_eye.png',
             width: 24,
             height: 24,
           ),

@@ -24,7 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------Back icon and Title--------------*/
+              //Back Icon and Title
               Row(
                 children: [
                   GestureDetector(
@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               SizedBox(height: 16),
-              /* --------------Body-------------- */
+              // Body
               Expanded(
                 child: Body(),
               ),
@@ -59,18 +59,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
        
         ),
       ),
-             
 
-    
-
-      
-
-      /* --------------Bottom Navigation Bar-------------- */
+      // Bottom Navigation Bar
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
-
-        
        ),
     );
   }

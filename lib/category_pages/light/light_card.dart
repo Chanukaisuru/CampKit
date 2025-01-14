@@ -27,7 +27,7 @@ class LightCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /*------------card image-------------------- */
+            // Card image
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -38,7 +38,7 @@ class LightCard extends StatelessWidget {
               ),
             ),
 
-            /*-----------------name---------------------- */
+            // Name
             const SizedBox(height: 8),
             Text(
               name,
@@ -49,7 +49,7 @@ class LightCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
 
-            /*-------------------description--------------------- */
+            // Description
             const SizedBox(height: 5),
             Text(
               description,
@@ -60,7 +60,7 @@ class LightCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
 
-            /*---------------------price--------------------*/
+            // Price
             const SizedBox(height: 5),
             Text(
               'Rs. $price/- per day',
@@ -70,7 +70,7 @@ class LightCard extends StatelessWidget {
               ),
             ),
 
-            /*------------------------cart button----------------------- */
+            // Cart button
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,

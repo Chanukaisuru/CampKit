@@ -30,7 +30,7 @@ class PopulerCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /*------------card image-------------------- */
+            // Card image
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -41,7 +41,7 @@ class PopulerCard extends StatelessWidget {
               ),
             ),
             
-            /*-----------------name---------------------- */
+            // Name
             const SizedBox(height: 8),
             Text(
               name,
@@ -51,7 +51,7 @@ class PopulerCard extends StatelessWidget {
               ),
             ),
 
-            /*----------------capacity--------------------------- */
+            // Capacity
             const SizedBox(height: 5),
             if(capacity !=null)
             Text(
@@ -62,7 +62,7 @@ class PopulerCard extends StatelessWidget {
               ),
             ),
             
-            /**-------------description------------------- */
+            // Description
             const SizedBox(height: 5),
             if(description !=null)
             
@@ -74,7 +74,7 @@ class PopulerCard extends StatelessWidget {
               ),
             ),
 
-            /*---------------------price--------------------*/
+            // Price
             const SizedBox(height: 5),
             Text(
               'Rs. $pricePerDay/- per day',
@@ -84,7 +84,7 @@ class PopulerCard extends StatelessWidget {
               ),
             ),
             
-            /*------------------------cart button----------------------- */
+            // Cart button
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onAddToCart,

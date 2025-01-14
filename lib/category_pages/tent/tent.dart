@@ -19,8 +19,6 @@ class TentPage extends StatefulWidget {
 class _TentPageState extends State<TentPage> {
   final int _selectedIndex = 1;
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class _TentPageState extends State<TentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*--------------back icon-------------- */
+              // Back icon
               Row(  
                 children: [
                   GestureDetector(
@@ -45,12 +43,10 @@ class _TentPageState extends State<TentPage> {
                     ),
                   ),
 
-              /*------------End of the back icon--------------- */
-                  
-                  
+                  // Title
                   const SizedBox(width: 10,),
                   const Text(
-                    'Available Backpacks',
+                    'Available Tents',
                     style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -58,29 +54,20 @@ class _TentPageState extends State<TentPage> {
                   ),
                 ],
               ),
-              
-              
-              /*---------------category bar--------------------- */
 
+              // Category bar
               SizedBox(height: 20),
                CategoryRow(selectedCategory: widget.initialCategory),
 
-              /*end category bar */
-
-
-              /*-----------------Search bar-------------------*/
-
-              
+              // Search bar
               const SizedBox(height: 20),
               custom.SearchBar(
                 onChanged: (value) {
-                  // Handle search input
                   print("Search input: $value");
                 },
               ),
-              
 
-              /*---------------------tent card-------------------------- */
+              // Tent card
               const SizedBox(height: 20),
               Expanded(
                 child: GridView.builder(
@@ -88,7 +75,7 @@ class _TentPageState extends State<TentPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.59, // change card hight
+                    childAspectRatio: 0.59,
                   ),
                   itemCount: tents.length,
                   itemBuilder: (context, index) {
@@ -114,9 +101,7 @@ class _TentPageState extends State<TentPage> {
      bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _selectedIndex,
         onTap: (index) => NavigationHelper.onNavBarItemTapped(context, index, _selectedIndex),
-         
       ),
     );
   }
-
 }

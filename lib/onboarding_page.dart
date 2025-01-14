@@ -15,9 +15,9 @@ class OnboardingPage extends StatelessWidget {
             children: [
               SizedBox(height: 30),
                 Image.asset(
-                  'assets/image/OnbordingPage_image.jpeg', // Replace with your asset image
-                  width: 400, // Adjust width if needed
-                  height: 400, // Adjust height if needed
+                  'assets/image/OnbordingPage_image.jpeg',
+                  width: 400,
+                  height: 400,
                 ),
               
               SizedBox(height: 30),
@@ -63,7 +63,6 @@ class OnboardingPage extends StatelessWidget {
                    ),
                 ),
               ),
-
 
             ],
           ),

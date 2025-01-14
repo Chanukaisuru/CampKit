@@ -21,7 +21,7 @@ class _CategoryRowState extends State<CategoryRow> {
   @override
 void initState() {
   super.initState();
-  _selectedCategory = widget.selectedCategory; // Use the correct property
+  _selectedCategory = widget.selectedCategory;
 }
 
   void _navigateToPage(String category) {
@@ -78,7 +78,6 @@ void initState() {
             (builder: (context) => OtherPage(initialCategory: category)),
         );
         break;
-      // Add other cases if needed
     }
   }
 
@@ -97,7 +96,7 @@ void initState() {
               setState(() {
                 _selectedCategory = category;
               });
-              _navigateToPage(category); // Navigate to the appropriate page
+              _navigateToPage(category);
             },
           );
         }).toList(),
