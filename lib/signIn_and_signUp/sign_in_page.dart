@@ -2,6 +2,7 @@ import 'package:campkit/home/home_page.dart';
 import 'package:campkit/signIn_and_signUp/sign_up_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -12,10 +13,29 @@ class _SignInPageState extends State<SignInPage> {
   bool _obscurePassword = true;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String? _errorMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus(); // Check session on startup
+  }
+
+  /// Check session on startup
+  Future<void> _checkLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    if (isLoggedIn) {
+      // Navigate to HomePage if session exists
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +175,7 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  /// Firebase Sign In Method
+  /// Firebase Sign In Method with session creation
   Future<void> _signIn() async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -163,14 +183,20 @@ class _SignInPageState extends State<SignInPage> {
         password: _passwordController.text.trim(),
       );
 
-      // On successful sign in, navigate to the Home Page
+      // Create session
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
+      // Optionally save user email
+      await prefs.setString('userEmail', _emailController.text.trim());
+
+      // Navigate to HomePage
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
-        // Update the error message with the exception message
         _errorMessage = e.message;
       });
 
@@ -183,7 +209,7 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
-  /// Password Field with Eye Icon Toggle (Using Custom Icons)
+  /// Password Field with Eye Icon Toggle
   Widget _buildPasswordField() {
     return TextField(
       controller: _passwordController,
@@ -218,8 +244,8 @@ class _SignInPageState extends State<SignInPage> {
               _obscurePassword
                   ? 'assets/icon/close_eye.png'
                   : 'assets/icon/open_eye.png',
-              width: 24, // Icon width
-              height: 24, // Icon height
+              width: 24,
+              height: 24,
             ),
             onPressed: () {
               setState(() {
@@ -235,8 +261,7 @@ class _SignInPageState extends State<SignInPage> {
   /// Social Media Icon Widget
   Widget _buildSocialIcon(String assetPath, double size) {
     return GestureDetector(
-      onTap: () {
-      },
+      onTap: () {},
       child: SizedBox(
         width: size,
         height: size,
