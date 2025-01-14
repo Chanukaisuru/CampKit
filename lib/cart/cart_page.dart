@@ -12,7 +12,7 @@ class MyCartPage extends StatefulWidget {
 }
 
 class _MyCartPageState extends State<MyCartPage> {
-  int _selectedIndex = 2;
+  final int _selectedIndex = 2;
 
   // List of cart items with quantities
   List<Map<String, dynamic>> cartItems = [
@@ -136,7 +136,7 @@ class _MyCartPageState extends State<MyCartPage> {
                   ],
                 ),
                 child: Column(
-                  children: [
+                  children: const [
                     SummaryRow(label: 'Price', value: 'Rs.1500'),
                     SummaryRow(label: 'Discount', value: 'Rs.0'),
                     SummaryRow(label: 'Total Price', value: 'Rs.1500', isBold: true),
