@@ -17,7 +17,7 @@ class CookingItemPage extends StatefulWidget {
 }
 
 class _CookingItemPageState extends State<CookingItemPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
 
   @override

@@ -19,7 +19,7 @@ class BackpacksMain extends StatefulWidget {
 }
 
 class _BackpackMainState extends State<BackpacksMain> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   
   @override

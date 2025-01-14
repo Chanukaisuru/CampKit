@@ -44,11 +44,11 @@ class Body extends StatelessWidget {
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
-    Key ? key,
+    super.key,
      required this.text,
      required this.icon,
      required this.press,
-  }):super (key: key);
+  });
 
   final String text, icon;
   final VoidCallback press;

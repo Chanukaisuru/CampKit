@@ -17,7 +17,7 @@ class PopulerPage extends StatefulWidget {
 }
 
 class _PopulerPageState extends State<PopulerPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   
 

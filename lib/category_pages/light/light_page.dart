@@ -17,7 +17,7 @@ class LightPage extends StatefulWidget {
 }
 
 class _LightPageState extends State<LightPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   
 

@@ -17,7 +17,7 @@ class TentPage extends StatefulWidget {
 }
 
 class _TentPageState extends State<TentPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   
 

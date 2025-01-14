@@ -17,7 +17,7 @@ class OtherPage extends StatefulWidget {
 }
 
 class _OtherPageState extends State<OtherPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   
 

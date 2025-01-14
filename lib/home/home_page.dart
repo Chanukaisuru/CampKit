@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     'assets/image/ad3.jpeg',
   ];
 
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   
   @override
