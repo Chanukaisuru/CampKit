@@ -35,7 +35,7 @@ class PopulerCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
                 imageUrl,
-                height: 100,
+                height: 87,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
