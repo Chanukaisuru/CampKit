@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../onboarding_page.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
@@ -9,34 +11,41 @@ class Body extends StatelessWidget {
         ProfilePic(),
         SizedBox(height: 20),
         ProfileMenu(
-          icon:'assets/icon/user.png',
-          text: 'My Account', 
-          press: () {}
-          ),
+          icon: 'assets/icon/user.png',
+          text: 'My Account',
+          press: () {},
+        ),
+        ProfileMenu(
+          icon: 'assets/icon/notification-bell.png',
+          text: 'Notifications',
+          press: () {},
+        ),
+        ProfileMenu(
+          icon: 'assets/icon/settings.png',
+          text: 'Settings',
+          press: () {},
+        ),
+        ProfileMenu(
+          icon: 'assets/icon/customer-support.png',
+          text: 'Help Center',
+          press: () {},
+        ),
+        ProfileMenu(
+          icon: 'assets/icon/power.png',
+          text: 'Log Out',
+          press: () async {
+            // Clear the session
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.clear();
 
-          ProfileMenu(
-          icon:'assets/icon/notification-bell.png',
-          text: 'Notifications', 
-          press: () {}
-          ),
-
-          ProfileMenu(
-          icon:'assets/icon/settings.png',
-          text: 'Settings', 
-          press: () {}
-          ),
-
-          ProfileMenu(
-          icon:'assets/icon/customer-support.png',
-          text: 'Help Center', 
-          press: () {}
-          ),
-
-          ProfileMenu(
-          icon:'assets/icon/power.png',
-          text: 'Log Out', 
-          press: () {}
-          ),
+            // Redirect to OnboardingPage
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => OnboardingPage()),
+              (route) => false,
+            );
+          },
+        ),
       ],
     );
   }
@@ -45,9 +54,9 @@ class Body extends StatelessWidget {
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
     super.key,
-     required this.text,
-     required this.icon,
-     required this.press,
+    required this.text,
+    required this.icon,
+    required this.press,
   });
 
   final String text, icon;
@@ -80,7 +89,6 @@ class ProfileMenu extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-    
             Image.asset('assets/icon/next.png'),
           ],
         ),
